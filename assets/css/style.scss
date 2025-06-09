@@ -14,7 +14,8 @@
   --accent-color: #3b82f6;
   --date-color: #888888;
   --month-color: #999999;
-  --hover-bg: #f0f8ff; /* 鼠标悬停背景色 - 添加备注 */
+  --hover-bg: #f0f8ff; /* 鼠标悬停背景色 */
+  --post-item-bg: #f8fafc; /* 文章项背景色 */
 }
 
 .dark-mode {
@@ -29,7 +30,8 @@
   --accent-color: #4f8df9;
   --date-color: #aaaaaa;
   --month-color: #888888;
-  --hover-bg: #1a2a3a; /* 暗色模式下的鼠标悬停背景色 - 添加备注 */
+  --hover-bg: #1a2a3a; /* 暗色模式下的鼠标悬停背景色 */
+  --post-item-bg: #2a2a2a; /* 暗色模式下的文章项背景色 */
 }
 
 * {
@@ -126,28 +128,46 @@ body {
   color: var(--text-color);
 }
 
-/* 文章列表样式 - 标题左边，时间右边，同一行 */
+/* 文章列表样式 - 参考图片设计，添加左侧圆角彩色竖线 */
 .post-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* 修改文章项样式，使标题在左侧，时间在右侧 - 添加备注 */
+/* 文章项样式 - 添加左侧圆角彩色竖线效果 */
 .post-item {
+  position: relative;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  background-color: var(--post-item-bg);
+  transition: background-color 0.2s ease;
+  overflow: hidden;
+}
+
+/* 左侧圆角彩色竖线 - 参考图片中的蓝色竖线 */
+.post-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 0 2px 2px 0;
+}
+
+/* 鼠标悬停效果 - 背景色为 #f0f8ff */
+.post-item:hover {
+  background-color: var(--hover-bg);
+}
+
+/* 文章项内容容器 */
+.post-item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.2s ease;
-  border-radius: 4px;
-}
-
-/* 添加鼠标悬停效果，背景色为 #f0f8ff - 添加备注 */
-.post-item:hover {
-  background-color: var(--hover-bg);
+  padding: 1rem 1rem 1rem 1.5rem; /* 左侧留出竖线空间 */
 }
 
 .post-link {
@@ -181,6 +201,61 @@ body {
   font-weight: 600;
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.5rem;
+}
+
+/* 分页样式 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pagination-link,
+.pagination-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: all 0.3s ease;
+  min-width: 44px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.pagination-link:hover:not(.disabled),
+.pagination-number:hover {
+  background-color: var(--link-color);
+  color: white;
+  border-color: var(--link-color);
+  transform: translateY(-1px);
+}
+
+.pagination-number.current {
+  background-color: var(--link-color);
+  color: white;
+  border-color: var(--link-color);
+  font-weight: 600;
+}
+
+.pagination-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--header-bg);
+}
+
+.pagination-link.disabled:hover {
+  transform: none;
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
 }
 
 /* 首页样式 */
@@ -367,6 +442,16 @@ body {
   .container {
     padding: 0 15px;
   }
+  
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .pagination-link, 
+  .pagination-number {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -387,10 +472,11 @@ body {
     padding: 1rem;
   }
   
-  /* 在小屏幕上调整文章项的布局 - 添加备注 */
-  .post-item {
+  /* 在小屏幕上调整文章项的布局 */
+  .post-item-content {
     flex-direction: column;
     align-items: flex-start;
+    padding: 0.75rem 0.75rem 0.75rem 1.25rem;
   }
   
   .post-link {

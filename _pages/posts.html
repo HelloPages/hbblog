@@ -2,39 +2,81 @@
 layout: default
 title: Posts
 permalink: /posts
-pagination: 
-  enabled: true
-  collection: posts
-  category: posts
-  per_page: 5
-  sort_field: date
-  sort_reverse: true
 ---
 
 <div class="posts">
   <h1 class="page-title">Posts</h1>
   
   {% assign posts = site.categories.posts | sort: 'date' | reverse %}
-  {% assign posts_by_year = posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  {% assign per_page = site.category_pagination.posts.per_page | default: 5 %}
   
-  {% for year_group in posts_by_year %}
-    <div class="year-section">
-      <h2>{{ year_group.name }}</h2>
-      
-      <ul class="post-list">
-        {% for post in year_group.items %}
-          <!-- 标题左侧，时间右侧，鼠标经过显示颜色 #f0f8ff -->
-          <li class="post-item">
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-          </li>
+  <!-- 获取当前页码 -->
+  {% assign page_param = page.url | split: '/page/' | last | plus: 0 %}
+  {% assign current_page = page_param | default: 1 %}
+  
+  <!-- 计算分页 -->
+  {% assign offset = current_page | minus: 1 | times: per_page %}
+  {% assign total_pages = posts.size | divided_by: per_page | ceil %}
+  
+  <!-- 获取当前页的文章 -->
+  {% assign current_posts = posts | offset: offset | limit: per_page %}
+  {% assign posts_by_year = current_posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  
+  {% if posts_by_year.size > 0 %}
+    {% for year_group in posts_by_year %}
+      <div class="year-section">
+        <h2>{{ year_group.name }}</h2>
+        
+        <ul class="post-list">
+          {% for post in year_group.items %}
+            <!-- 添加左侧圆角彩色竖线，标题左侧，时间右侧 -->
+            <li class="post-item">
+              <div class="post-item-content">
+                <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+                <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+    
+    <!-- 分页导航 -->
+    {% if total_pages > 1 %}
+      <div class="pagination">
+        <!-- 上一页 -->
+        {% if current_page > 1 %}
+          {% if current_page == 2 %}
+            <a href="{{ '/posts' | relative_url }}" class="pagination-link">&laquo; 上一页</a>
+          {% else %}
+            {% assign prev_page = current_page | minus: 1 %}
+            <a href="{{ '/posts/page/' | append: prev_page | relative_url }}" class="pagination-link">&laquo; 上一页</a>
+          {% endif %}
+        {% else %}
+          <span class="pagination-link disabled">&laquo; 上一页</span>
+        {% endif %}
+        
+        <!-- 页码 -->
+        {% for page_num in (1..total_pages) %}
+          {% if page_num == current_page %}
+            <span class="pagination-number current">{{ page_num }}</span>
+          {% elsif page_num == 1 %}
+            <a href="{{ '/posts' | relative_url }}" class="pagination-number">{{ page_num }}</a>
+          {% else %}
+            <a href="{{ '/posts/page/' | append: page_num | relative_url }}" class="pagination-number">{{ page_num }}</a>
+          {% endif %}
         {% endfor %}
-      </ul>
-    </div>
-  {% endfor %}
-  
-  <!-- 分页导航 -->
-  {% if paginator.total_pages > 1 %}
-    {% include pagination.html %}
+        
+        <!-- 下一页 -->
+        {% if current_page < total_pages %}
+          {% assign next_page = current_page | plus: 1 %}
+          <a href="{{ '/posts/page/' | append: next_page | relative_url }}" class="pagination-link">下一页 &raquo;</a>
+        {% else %}
+          <span class="pagination-link disabled">下一页 &raquo;</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% else %}
+    <p>暂无 Posts 内容。</p>
   {% endif %}
 </div>
