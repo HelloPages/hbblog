@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-## 关于我
+## 关于我md
 
 这是一个使用Jekyll构建的个人博客网站，用于分享我的笔记、文章和想法。
 
