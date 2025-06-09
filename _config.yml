@@ -24,6 +24,10 @@ permalink: /:categories/:year/:month/:day/:title/  # 文章URL格式
 paginate: 5                              # 首页每页显示文章数
 paginate_path: "/page:num/"              # 首页分页URL格式
 
+# 外部CSS
+external_css:
+  - "https://hbw.me/blog/assets/css/style.css"
+
 # 分类页面分页设置 - 为各个分类页面添加独立的分页配置
 category_pagination:
   notes:
