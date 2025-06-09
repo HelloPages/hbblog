@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
        <!--  assets  -->
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">  
+  
+  {% for css in site.external_css %}
+  <link rel="stylesheet" href="{{ css }}">
+{% endfor %}
+
+<!--    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">    -->
   <script>
     // Check for dark mode preference
     if (localStorage.getItem('darkMode') === 'true' || 
