@@ -1,0 +1,10 @@
+<ul class="post-list title-only">
+  {% for post in include.posts %}
+  <li class="post-item">
+    <a href="{{ post.url | relative_url }}" class="post-link">
+      <span class="post-title">{{ post.title }}</span>
+      <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

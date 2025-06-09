@@ -1,0 +1,20 @@
+---
+layout: page
+title: Home
+permalink: /home/
+---
+
+<div class="collections-container">
+  <p>Here are some collections of related content:</p>
+  
+  <div class="collection-list">
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      <div class="collection-item">
+        <h2 class="collection-title">{{ category[0] | capitalize }}</h2>
+        <p class="collection-count">{{ category[1].size }} items</p>
+        <a href="{{ '/category/' | append: category[0] | slugify | relative_url }}" class="collection-link">View collection →</a>
+      </div>
+    {% endfor %}
+  </div>
+</div>

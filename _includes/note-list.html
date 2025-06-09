@@ -1,0 +1,8 @@
+<div class="note-grid">
+  {% for note in include.notes %}
+  <div class="note-item">
+    <h3 class="note-title"><a href="{{ note.url | relative_url }}">{{ note.title }}</a></h3>
+    <div class="note-excerpt">{{ note.excerpt | strip_html | truncatewords: 30 }}</div>
+  </div>
+  {% endfor %}
+</div>

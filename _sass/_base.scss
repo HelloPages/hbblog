@@ -1,0 +1,209 @@
+// ========================================
+// HB Jekyll 主题 - 基础样式文件
+// 包含全局重置样式和基础元素样式
+// ========================================
+
+// 全局重置
+* {
+  box-sizing: border-box;              // 使用border-box盒模型
+  margin: 0;                           // 重置外边距
+  padding: 0;                          // 重置内边距
+}
+
+// HTML和Body基础样式
+html {
+  scroll-behavior: smooth;             // 平滑滚动
+  font-size: 16px;                     // 基础字体大小
+}
+
+body {
+  font-family: $font-family-base;      // 使用变量中定义的字体
+  line-height: 1.6;                    // 行高设置
+  color: var(--color-text);            // 文本颜色
+  background-color: var(--color-background); // 背景色
+  transition: background-color $transition-normal, color $transition-normal; // 主题切换动画
+  -webkit-font-smoothing: antialiased; // 字体平滑渲染
+  -moz-osx-font-smoothing: grayscale;  // Firefox字体平滑
+}
+
+// 容器样式
+.container {
+  max-width: $container-max-width;     // 最大宽度
+  margin: 0 auto;                      // 水平居中
+  padding: 0 $spacing-md;              // 左右内边距
+  
+  // 响应式调整
+  @media (max-width: $breakpoint-sm) {
+    padding: 0 $spacing-sm;            // 小屏幕减少内边距
+  }
+}
+
+// 链接样式
+a {
+  color: var(--color-link);            // 链接颜色
+  text-decoration: none;               // 去除下划线
+  transition: color $transition-fast;  // 颜色过渡动画
+  
+  &:hover {
+    color: var(--color-link-hover);    // 悬停颜色
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-link); // 焦点轮廓
+    outline-offset: 2px;               // 轮廓偏移
+    border-radius: $border-radius-sm;  // 轮廓圆角
+  }
+}
+
+// 标题样式
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;                    // 字体粗细
+  line-height: 1.3;                    // 标题行高
+  margin-bottom: $spacing-md;          // 下方外边距
+  color: var(--color-text);            // 标题颜色
+}
+
+h1 { font-size: 2.5rem; }             // 一级标题大小
+h2 { font-size: 2rem; }               // 二级标题大小
+h3 { font-size: 1.75rem; }            // 三级标题大小
+h4 { font-size: 1.5rem; }             // 四级标题大小
+h5 { font-size: 1.25rem; }            // 五级标题大小
+h6 { font-size: 1.125rem; }           // 六级标题大小
+
+// 段落样式
+p {
+  margin-bottom: $spacing-md;          // 段落下方外边距
+  line-height: 1.7;                    // 段落行高
+}
+
+// 列表样式
+ul, ol {
+  margin-bottom: $spacing-md;          // 列表下方外边距
+  padding-left: $spacing-lg;           // 列表缩进
+  
+  li {
+    margin-bottom: $spacing-xs;        // 列表项间距
+  }
+}
+
+// 引用块样式
+blockquote {
+  border-left: 4px solid var(--color-border); // 左侧边框
+  padding-left: $spacing-md;           // 左侧内边距
+  margin: $spacing-lg 0;               // 上下外边距
+  font-style: italic;                  // 斜体
+  color: var(--color-text-light);      // 次要文本颜色
+  
+  p:last-child {
+    margin-bottom: 0;                  // 最后段落无下边距
+  }
+}
+
+// 代码样式
+code {
+  font-family: $font-family-code;      // 等宽字体
+  font-size: 0.9em;                    // 稍小字体
+  background-color: var(--color-border); // 背景色
+  padding: 0.2em 0.4em;                // 内边距
+  border-radius: $border-radius-sm;    // 圆角
+  color: var(--color-text);            // 文本颜色
+}
+
+// 代码块样式
+pre {
+  font-family: $font-family-code;      // 等宽字体
+  background-color: var(--color-border); // 背景色
+  padding: $spacing-md;                // 内边距
+  border-radius: $border-radius-md;    // 圆角
+  overflow-x: auto;                    // 水平滚动
+  margin: $spacing-lg 0;               // 上下外边距
+  
+  code {
+    background-color: transparent;     // 代码块内代码无背景
+    padding: 0;                        // 无内边距
+    border-radius: 0;                  // 无圆角
+  }
+}
+
+// 图片样式
+img {
+  max-width: 100%;                     // 响应式图片
+  height: auto;                        // 保持宽高比
+  border-radius: $border-radius-md;    // 圆角
+  box-shadow: $shadow-sm;              // 轻微阴影
+}
+
+// 表格样式
+table {
+  width: 100%;                         // 全宽
+  border-collapse: collapse;           // 边框合并
+  margin: $spacing-lg 0;               // 上下外边距
+  
+  th, td {
+    padding: $spacing-sm $spacing-md;  // 单元格内边距
+    text-align: left;                  // 左对齐
+    border-bottom: 1px solid var(--color-border); // 底部边框
+  }
+  
+  th {
+    font-weight: 600;                  // 表头加粗
+    background-color: var(--color-border); // 表头背景
+  }
+  
+  tr:hover {
+    background-color: var(--color-border); // 行悬停背景
+  }
+}
+
+// 水平分割线
+hr {
+  border: none;                        // 去除默认边框
+  height: 1px;                         // 高度
+  background-color: var(--color-border); // 背景色
+  margin: $spacing-xl 0;               // 上下外边距
+}
+
+// 按钮基础样式
+button {
+  font-family: inherit;                // 继承字体
+  font-size: inherit;                  // 继承字体大小
+  cursor: pointer;                     // 鼠标指针
+  border: none;                        // 去除默认边框
+  background: none;                    // 去除默认背景
+  transition: all $transition-fast;    // 过渡动画
+  
+  &:focus {
+    outline: 2px solid var(--color-link); // 焦点轮廓
+    outline-offset: 2px;               // 轮廓偏移
+  }
+}
+
+// 表单元素样式
+input, textarea, select {
+  font-family: inherit;                // 继承字体
+  font-size: inherit;                  // 继承字体大小
+  padding: $spacing-sm $spacing-md;    // 内边距
+  border: 1px solid var(--color-border); // 边框
+  border-radius: $border-radius-sm;    // 圆角
+  background-color: var(--color-background); // 背景色
+  color: var(--color-text);            // 文本颜色
+  transition: border-color $transition-fast; // 边框颜色过渡
+  
+  &:focus {
+    outline: none;                     // 去除默认轮廓
+    border-color: var(--color-link);   // 聚焦边框颜色
+  }
+}
+
+// 无障碍功能 - 减少动画
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;      // 极短动画时长
+    animation-iteration-count: 1 !important;    // 动画只播放一次
+    transition-duration: 0.01ms !important;     // 极短过渡时长
+  }
+  
+  html {
+    scroll-behavior: auto;             // 关闭平滑滚动
+  }
+}

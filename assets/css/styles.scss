@@ -1,0 +1,925 @@
+// 标签相关的bug修复
+// 颜色标签变量定义
+:root {
+  /* ========================================
+     基础颜色变量 - 全局使用
+     ======================================== */
+  --color-background: #ffffff;      /* 背景色 - 白色 */
+  --color-text: #333333;           /* 主文本色 - 深灰 */
+  --color-text-light: #666666;     /* 次要文本色 - 中灰 */
+  --color-border: #eeeeee;         /* 边框色 - 浅灰 */
+  --color-link: #0066cc;           /* 链接色 - 蓝色 */
+  --color-link-hover: #004499;     /* 链接悬停色 - 深蓝 */
+  
+  /* ========================================
+     标签颜色变量 - 30种不同颜色的标签
+     ======================================== */
+  --color-tag-1: #e53935;         /* 标签色1 - 红色 */
+  --color-tag-2: #8e24aa;         /* 标签色2 - 紫色 */
+  --color-tag-3: #3949ab;         /* 标签色3 - 靛蓝 */
+  --color-tag-4: #039be5;         /* 标签色4 - 浅蓝 */
+  --color-tag-5: #00897b;         /* 标签色5 - 青绿 */
+  --color-tag-6: #7cb342;         /* 标签色6 - 浅绿 */
+  --color-tag-7: #ff00ff;         /* 标签色7 - 洋红 */
+  --color-tag-8: #87cefa;         /* 标签色8 - 天蓝 */
+  --color-tag-9: #20b2aa;         /* 标签色9 - 浅海绿 */
+  --color-tag-10: #fffff0;        /* 标签色10 - 象牙白 */
+  --color-tag-11: #00008b;        /* 标签色11 - 深蓝 */
+  --color-tag-12: #9c27b0;        /* 标签色12 - 紫色 */
+  --color-tag-13: #2196f3;        /* 标签色13 - 蓝色 */
+  --color-tag-14: #00bcd4;        /* 标签色14 - 青色 */
+  --color-tag-15: #009688;        /* 标签色15 - 蓝绿 */
+  --color-tag-16: #8bc34a;        /* 标签色16 - 浅绿 */
+  --color-tag-17: #ffc107;        /* 标签色17 - 琥珀色 */
+  --color-tag-18: #ff9800;        /* 标签色18 - 橙色 */
+  --color-tag-19: #ffc107;        /* 标签色19 - 琥珀色 */
+  --color-tag-20: #ff9800;        /* 标签色20 - 橙色 */
+  --color-tag-21: #f44336;        /* 标签色21 - 红色 */
+  --color-tag-22: #673ab7;        /* 标签色22 - 深紫 */
+  --color-tag-23: #1976d2;        /* 标签色23 - 蓝色 */
+  --color-tag-24: #00acc1;        /* 标签色24 - 青色 */
+  --color-tag-25: #00897b;        /* 标签色25 - 蓝绿 */
+  --color-tag-26: #689f38;        /* 标签色26 - 浅绿 */
+  --color-tag-27: #ffeb3b;        /* 标签色27 - 黄色 */
+  --color-tag-28: #f57c00;        /* 标签色28 - 深橙 */
+  --color-tag-29: #ffeb3b;        /* 标签色29 - 黄色 */
+  --color-tag-30: #f57c00;        /* 标签色30 - 深橙 */
+  
+  /* ========================================
+     页面主题颜色配置 - 方便后期修改
+     每个页面类型都有独特的主题色
+     ======================================== */
+  
+  /* Archive 页面颜色 - 蓝色主题 */
+  --archive-primary: #0066cc;        /* 主色调 - 左边框和链接 */
+  --archive-primary-hover: #004499;  /* 悬停主色 */
+  --archive-bg-hover: #e3f2fd;       /* 悬停背景色 */
+  --archive-shadow: rgba(0, 102, 204, 0.15); /* 阴影颜色 */
+  
+  /* Posts 页面颜色 - 绿色主题 */
+  --posts-primary: #00897b;          /* 主色调 - 左边框和链接 */
+  --posts-primary-hover: #00695c;    /* 悬停主色 */
+  --posts-bg-hover: #e0f2f1;         /* 悬停背景色 */
+  --posts-shadow: rgba(0, 137, 123, 0.15); /* 阴影颜色 */
+  
+  /* Notes 页面颜色 - 紫色主题 */
+  --notes-primary: #8e24aa;          /* 主色调 - 左边框和链接 */
+  --notes-primary-hover: #6a1b9a;    /* 悬停主色 */
+  --notes-bg-hover: #f3e5f5;         /* 悬停背景色 */
+  --notes-shadow: rgba(142, 36, 170, 0.15); /* 阴影颜色 */
+  
+  /* Microblog 页面颜色 - 橙色主题 */
+  --microblog-primary: #fb8c00;      /* 主色调 - 左边框和链接 */
+  --microblog-primary-hover: #ef6c00; /* 悬停主色 */
+  --microblog-bg-hover: #fff3e0;     /* 悬停背景色 */
+  --microblog-shadow: rgba(251, 140, 0, 0.15); /* 阴影颜色 */
+}
+
+/* ========================================
+   深色模式颜色配置
+   ======================================== */
+.dark-mode {
+  --color-background: #121212;      /* 深色背景 */
+  --color-text: #e0e0e0;           /* 深色模式文本 */
+  --color-text-light: #a0a0a0;     /* 深色模式次要文本 */
+  --color-border: #333333;         /* 深色模式边框 */
+  --color-link: #4dabf7;           /* 深色模式链接色 */
+  --color-link-hover: #74c0fc;     /* 深色模式链接悬停色 */
+  
+  /* ========================================
+     深色模式下的页面主题颜色
+     ======================================== */
+  
+  /* Archive 页面 - 深色模式 */
+  --archive-primary: #64b5f6;       /* 深色模式Archive主色 */
+  --archive-primary-hover: #42a5f5; /* 深色模式Archive悬停色 */
+  --archive-bg-hover: #1e3a8a;      /* 深色模式Archive悬停背景 */
+  --archive-shadow: rgba(100, 181, 246, 0.2); /* 深色模式Archive阴影 */
+  
+  /* Posts 页面 - 深色模式 */
+  --posts-primary: #4db6ac;         /* 深色模式Posts主色 */
+  --posts-primary-hover: #26a69a;   /* 深色模式Posts悬停色 */
+  --posts-bg-hover: #1e4037;        /* 深色模式Posts悬停背景 */
+  --posts-shadow: rgba(77, 182, 172, 0.2); /* 深色模式Posts阴影 */
+  
+  /* Notes 页面 - 深色模式 */
+  --notes-primary: #ba68c8;         /* 深色模式Notes主色 */
+  --notes-primary-hover: #ab47bc;   /* 深色模式Notes悬停色 */
+  --notes-bg-hover: #4a148c;        /* 深色模式Notes悬停背景 */
+  --notes-shadow: rgba(186, 104, 200, 0.2); /* 深色模式Notes阴影 */
+  
+  /* Microblog 页面 - 深色模式 */
+  --microblog-primary: #ffb74d;     /* 深色模式Microblog主色 */
+  --microblog-primary-hover: #ffa726; /* 深色模式Microblog悬停色 */
+  --microblog-bg-hover: #e65100;    /* 深色模式Microblog悬停背景 */
+  --microblog-shadow: rgba(255, 183, 77, 0.2); /* 深色模式Microblog阴影 */
+}
+
+/* ========================================
+   基础样式重置
+   ======================================== */
+* {
+  box-sizing: border-box;  /* 盒模型设置为border-box */
+  margin: 0;               /* 清除默认外边距 */
+  padding: 0;              /* 清除默认内边距 */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* 系统字体栈 */
+  line-height: 1.6;        /* 行高设置 */
+  color: var(--color-text); /* 使用CSS变量设置文本颜色 */
+  background-color: var(--color-background); /* 使用CSS变量设置背景色 */
+  transition: background-color 0.3s, color 0.3s; /* 颜色切换动画 */
+}
+
+html {
+  scroll-behavior: smooth;  /* 平滑滚动 */
+}
+
+/* ========================================
+   布局容器
+   ======================================== */
+.container {
+  max-width: 1200px;       /* 最大宽度限制 */
+  margin: 0 auto;          /* 水平居中 */
+  padding: 0 20px;         /* 左右内边距 */
+}
+
+/* ========================================
+   链接样式
+   ======================================== */
+a {
+  color: var(--color-link);           /* 链接颜色 */
+  text-decoration: none;              /* 去除下划线 */
+  transition: color 0.2s;             /* 颜色过渡动画 */
+  
+  &:hover {
+    color: var(--color-link-hover);   /* 悬停时的颜色 */
+  }
+}
+
+/* ========================================
+   网站头部
+   ======================================== */
+.site-header {
+  padding: 20px 0;                    /* 上下内边距 */
+  border-bottom: 1px solid var(--color-border); /* 底部边框 */
+  margin-bottom: 40px;                /* 底部外边距 */
+  
+  .container {
+    display: flex;                    /* 弹性布局 */
+    justify-content: space-between;   /* 两端对齐 */
+    align-items: center;              /* 垂直居中 */
+  }
+}
+
+/* 网站Logo */
+.site-logo {
+  font-size: 24px;         /* 字体大小 */
+  font-weight: bold;       /* 粗体 */
+  text-decoration: none;   /* 去除下划线 */
+}
+
+/* 导航菜单 */
+.site-nav {
+  display: flex;           /* 弹性布局 */
+  gap: 20px;              /* 项目间距 */
+  align-items: center;     /* 垂直居中 */
+  
+  a {
+    color: var(--color-text);  /* 导航链接颜色 */
+    font-weight: 500;          /* 中等粗细 */
+    
+    &:hover, &.active {
+      color: var(--color-link); /* 悬停和激活状态颜色 */
+    }
+  }
+  
+  /* 导航按钮（如深色模式切换） */
+  button {
+    background: none;        /* 无背景 */
+    border: none;           /* 无边框 */
+    cursor: pointer;        /* 鼠标指针 */
+    color: var(--color-text); /* 按钮颜色 */
+    display: flex;          /* 弹性布局 */
+    align-items: center;    /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    padding: 5px;           /* 内边距 */
+    
+    &:hover {
+      color: var(--color-link); /* 悬停颜色 */
+    }
+  }
+}
+
+/* ========================================
+   主要内容区域
+   ======================================== */
+.site-content {
+  min-height: calc(100vh - 180px); /* 最小高度计算 */
+  padding-bottom: 40px;            /* 底部内边距 */
+}
+
+.page-title {
+  font-size: 2.5rem;      /* 页面标题字体大小 */
+  margin-bottom: 30px;    /* 底部外边距 */
+}
+
+/* ========================================
+   通用页面容器样式
+   适用于 Archive, Posts, Notes, Microblog
+   ======================================== */
+.archive,
+.posts,
+.notes,
+.microblog {
+  max-width: 800px;       /* 最大宽度 */
+  margin: 0 auto;         /* 水平居中 */
+  padding: 2rem 1rem;     /* 内边距 */
+  
+  /* 移动端适配 */
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* ========================================
+   通用年份分组样式
+   ======================================== */
+.archive-year,
+.posts-year,
+.notes-year,
+.microblog-year {
+  margin-bottom: 2.5rem;  /* 底部外边距 */
+  
+  &:first-child {
+    margin-top: 0;        /* 第一个元素无顶部外边距 */
+  }
+  
+  &:last-child {
+    margin-bottom: 0;     /* 最后一个元素无底部外边距 */
+  }
+  
+  /* 年份标题 */
+  h2 {
+    font-size: 1.8rem;    /* 字体大小 */
+    font-weight: 600;     /* 字体粗细 */
+    color: var(--color-text); /* 文本颜色 */
+    margin-bottom: 1.5rem; /* 底部外边距 */
+    padding-bottom: 0.5rem; /* 底部内边距 */
+    border-bottom: 2px solid var(--color-border); /* 底部边框 */
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+/* ========================================
+   Archive 页面专用样式 - 蓝色主题
+   ======================================== */
+.archive {
+  .post-list {
+    list-style: none;       /* 去除列表样式 */
+    padding: 0;             /* 无内边距 */
+    margin: 0;              /* 无外边距 */
+    
+    li {
+      margin-bottom: 1rem;  /* 底部外边距 */
+      padding: 1.2rem;      /* 内边距 */
+      background: var(--color-background); /* 背景色 */
+      border: 1px solid var(--color-border); /* 边框 */
+      border-radius: 8px;   /* 圆角 */
+      border-left: 4px solid var(--archive-primary); /* Archive 主色左边框 */
+      transition: all 0.3s ease; /* 过渡动画 */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* 阴影 */
+      cursor: pointer;      /* 鼠标指针 */
+      
+      &:hover {
+        background: var(--archive-bg-hover); /* Archive 悬停背景 */
+        transform: translateX(5px);          /* 向右移动效果 */
+        box-shadow: 0 2px 8px var(--archive-shadow); /* Archive 悬停阴影 */
+        border-left-color: var(--archive-primary-hover); /* Archive 悬停边框色 */
+      }
+      
+      &:active {
+        transform: translateX(3px); /* 点击时的移动效果 */
+      }
+      
+      /* 移动端适配 */
+      @media (max-width: 768px) {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+  
+  .post-title:hover {
+    color: var(--archive-primary-hover); /* Archive 标题悬停色 */
+  }
+}
+
+/* ========================================
+   Posts 页面专用样式 - 绿色主题
+   ======================================== */
+.posts {
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      border-left: 4px solid var(--posts-primary); /* Posts 主色边框 */
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      
+      &:hover {
+        background: var(--posts-bg-hover); /* Posts 悬停背景 */
+        transform: translateX(5px);
+        box-shadow: 0 2px 8px var(--posts-shadow); /* Posts 悬停阴影 */
+        border-left-color: var(--posts-primary-hover); /* Posts 悬停边框色 */
+      }
+      
+      &:active {
+        transform: translateX(3px);
+      }
+      
+      @media (max-width: 768px) {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+  
+  .post-title:hover {
+    color: var(--posts-primary-hover); /* Posts 标题悬停色 */
+  }
+}
+
+/* ========================================
+   Notes 页面专用样式 - 紫色主题
+   ======================================== */
+.notes {
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      border-left: 4px solid var(--notes-primary); /* Notes 主色边框 */
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      
+      &:hover {
+        background: var(--notes-bg-hover); /* Notes 悬停背景 */
+        transform: translateX(5px);
+        box-shadow: 0 2px 8px var(--notes-shadow); /* Notes 悬停阴影 */
+        border-left-color: var(--notes-primary-hover); /* Notes 悬停边框色 */
+      }
+      
+      &:active {
+        transform: translateX(3px);
+      }
+      
+      @media (max-width: 768px) {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+  
+  .post-title:hover {
+    color: var(--notes-primary-hover); /* Notes 标题悬停色 */
+  }
+}
+
+/* ========================================
+   Microblog 页面专用样式 - 橙色主题
+   ======================================== */
+.microblog {
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      border-left: 4px solid var(--microblog-primary); /* Microblog 主色边框 */
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      
+      &:hover {
+        background: var(--microblog-bg-hover); /* Microblog 悬停背景 */
+        transform: translateX(5px);
+        box-shadow: 0 2px 8px var(--microblog-shadow); /* Microblog 悬停阴影 */
+        border-left-color: var(--microblog-primary-hover); /* Microblog 悬停边框色 */
+      }
+      
+      &:active {
+        transform: translateX(3px);
+      }
+      
+      @media (max-width: 768px) {
+        padding: 1rem;
+        margin-bottom: 0.8rem;
+      }
+    }
+  }
+  
+  .post-title:hover {
+    color: var(--microblog-primary-hover); /* Microblog 标题悬停色 */
+  }
+}
+
+/* ========================================
+   通用文章链接和标题样式
+   ======================================== */
+.post-link {
+  text-decoration: none;    /* 去除下划线 */
+  color: inherit;           /* 继承颜色 */
+  display: block;           /* 块级显示 */
+  
+  &:hover {
+    color: inherit;         /* 悬停时继承颜色 */
+  }
+  
+  /* 焦点样式（键盘导航） */
+  &:focus {
+    outline: 2px solid var(--color-link); /* 焦点轮廓 */
+    outline-offset: 2px;    /* 轮廓偏移 */
+    border-radius: 4px;     /* 轮廓圆角 */
+  }
+}
+
+.post-title {
+  font-size: 1.1rem;       /* 字体大小 */
+  font-weight: 500;        /* 字体粗细 */
+  color: var(--color-text); /* 文本颜色 */
+  margin-bottom: 0.5rem;   /* 底部外边距 */
+  line-height: 1.4;        /* 行高 */
+  transition: color 0.3s ease; /* 颜色过渡 */
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;       /* 移动端字体大小 */
+  }
+}
+
+.post-date {
+  font-size: 0.9rem;       /* 字体大小 */
+  color: var(--color-text-light); /* 次要文本颜色 */
+  font-weight: 400;        /* 字体粗细 */
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;    /* 移动端字体大小 */
+  }
+}
+
+/* ========================================
+   文章列表 - 用于其他仍使用纯标题样式的页面
+   ======================================== */
+.post-list {
+  list-style: none;        /* 去除列表样式 */
+  padding: 0;              /* 无内边距 */
+  margin: 0;               /* 无外边距 */
+  
+  /* 仅标题样式的列表 */
+  &.title-only {
+    .post-item {
+      border-bottom: 1px solid var(--color-border); /* 底部边框 */
+      
+      &:last-child {
+        border-bottom: none; /* 最后一项无底部边框 */
+      }
+    }
+    
+    .post-link {
+      display: flex;         /* 弹性布局 */
+      justify-content: space-between; /* 两端对齐 */
+      align-items: center;   /* 垂直居中 */
+      padding: 15px 0;       /* 上下内边距 */
+      color: var(--color-text); /* 文本颜色 */
+      
+      &:hover {
+        .post-title {
+          color: var(--color-link); /* 悬停时标题颜色 */
+        }
+      }
+    }
+    
+    .post-date {
+      color: var(--color-text-light); /* 日期颜色 */
+      font-size: 0.9rem;    /* 日期字体大小 */
+    }
+  }
+}
+
+/* ========================================
+   搜索功能
+   ======================================== */
+.search-container {
+  margin-bottom: 30px;     /* 底部外边距 */
+  
+  input {
+    width: 100%;           /* 全宽 */
+    padding: 10px 15px;    /* 内边距 */
+    border: 1px solid var(--color-border); /* 边框 */
+    border-radius: 5px;    /* 圆角 */
+    font-size: 1rem;       /* 字体大小 */
+    background-color: var(--color-background); /* 背景色 */
+    color: var(--color-text); /* 文本颜色 */
+    
+    &:focus {
+      outline: none;        /* 去除默认轮廓 */
+      border-color: var(--color-link); /* 焦点边框颜色 */
+    }
+  }
+}
+
+/* ========================================
+   标签云和标签样式
+   ======================================== */
+.tag-cloud {
+  display: flex;           /* 弹性布局 */
+  flex-wrap: wrap;         /* 允许换行 */
+  gap: 10px;              /* 项目间距 */
+  margin-bottom: 40px;     /* 底部外边距 */
+}
+
+.tag {
+  display: inline-block;   /* 行内块显示 */
+  padding: 5px 10px;       /* 内边距 */
+  border-radius: 15px;     /* 圆角 */
+  font-size: 0.9rem;       /* 字体大小 */
+  transition: transform 0.2s; /* 变换过渡 */
+  
+  &:hover {
+    transform: scale(1.05); /* 悬停时放大 */
+  }
+  
+  .tag-count {
+    font-size: 0.8rem;     /* 标签计数字体大小 */
+    opacity: 0.8;          /* 透明度 */
+  }
+}
+
+/* 生成30种标签颜色类 */
+@for $i from 1 through 30 {
+  .tag-#{$i} {
+    color: white;          /* 白色文字 */
+    background-color: var(--color-tag-#{$i}); /* 对应的标签背景色 */
+  }
+}
+
+.tag-section {
+  margin-bottom: 40px;     /* 底部外边距 */
+  
+  .tag-name {
+    font-size: 1.5rem;     /* 标签名字体大小 */
+    margin-bottom: 15px;   /* 底部外边距 */
+    padding-bottom: 5px;   /* 底部内边距 */
+    border-bottom: 2px solid var(--color-border); /* 底部边框 */
+  }
+}
+
+/* ========================================
+   分页导航
+   ======================================== */
+.pagination {
+  display: flex;           /* 弹性布局 */
+  justify-content: center; /* 水平居中 */
+  gap: 10px;              /* 项目间距 */
+  margin-top: 40px;        /* 顶部外边距 */
+  
+  .pagination-item {
+    padding: 8px 12px;     /* 内边距 */
+    border: 1px solid var(--color-border); /* 边框 */
+    border-radius: 4px;    /* 圆角 */
+    
+    &.pagination-current {
+      background-color: var(--color-link); /* 当前页背景色 */
+      color: white;        /* 当前页文字颜色 */
+      border-color: var(--color-link); /* 当前页边框色 */
+    }
+    
+    &.pagination-disabled {
+      color: var(--color-text-light); /* 禁用状态颜色 */
+      cursor: not-allowed;  /* 禁用鼠标指针 */
+    }
+  }
+}
+
+/* ========================================
+   文章内容页面
+   ======================================== */
+.post {
+  max-width: 800px;        /* 最大宽度 */
+  margin: 0 auto;          /* 水平居中 */
+  
+  .post-header {
+    margin-bottom: 30px;   /* 底部外边距 */
+    
+    .post-title {
+      font-size: 2.5rem;   /* 文章标题字体大小 */
+      margin-bottom: 10px; /* 底部外边距 */
+    }
+    
+    .post-date {
+      display: block;       /* 块级显示 */
+      color: var(--color-text-light); /* 日期颜色 */
+      margin-bottom: 15px;  /* 底部外边距 */
+    }
+    
+    .post-tags {
+      display: flex;        /* 弹性布局 */
+      flex-wrap: wrap;      /* 允许换行 */
+      gap: 8px;            /* 项目间距 */
+    }
+  }
+  
+  /* 文章正文内容 */
+  .post-content {
+    font-size: 1.1rem;     /* 字体大小 */
+    line-height: 1.8;      /* 行高 */
+    
+    /* 标题样式 */
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.5em;    /* 顶部外边距 */
+      margin-bottom: 0.5em; /* 底部外边距 */
+    }
+    
+    /* 段落和列表 */
+    p, ul, ol {
+      margin-bottom: 1.5em; /* 底部外边距 */
+    }
+    
+    /* 列表缩进 */
+    ul, ol {
+      padding-left: 1.5em;  /* 左内边距 */
+    }
+    
+    /* 引用块 */
+    blockquote {
+      border-left: 4px solid var(--color-border); /* 左边框 */
+      padding-left: 1em;    /* 左内边距 */
+      font-style: italic;   /* 斜体 */
+      color: var(--color-text-light); /* 文本颜色 */
+    }
+    
+    /* 图片 */
+    img {
+      max-width: 100%;      /* 最大宽度 */
+      height: auto;         /* 高度自适应 */
+      display: block;       /* 块级显示 */
+      margin: 2em auto;     /* 上下外边距和水平居中 */
+    }
+    
+    /* 行内代码 */
+    code {
+      background-color: var(--color-border); /* 背景色 */
+      padding: 0.2em 0.4em; /* 内边距 */
+      border-radius: 3px;   /* 圆角 */
+      font-family: monospace; /* 等宽字体 */
+    }
+    
+    /* 代码块 */
+    pre {
+      background-color: var(--color-border); /* 背景色 */
+      padding: 1em;         /* 内边距 */
+      border-radius: 5px;   /* 圆角 */
+      overflow-x: auto;     /* 水平滚动 */
+      margin-bottom: 1.5em; /* 底部外边距 */
+      
+      code {
+        background-color: transparent; /* 透明背景 */
+        padding: 0;         /* 无内边距 */
+      }
+    }
+  }
+}
+
+/* ========================================
+   笔记网格布局
+   ======================================== */
+.note-grid {
+  display: grid;           /* 网格布局 */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 响应式网格列 */
+  gap: 20px;              /* 网格间距 */
+  margin-bottom: 30px;     /* 底部外边距 */
+}
+
+.note-item {
+  border: 1px solid var(--color-border); /* 边框 */
+  border-radius: 5px;      /* 圆角 */
+  padding: 20px;           /* 内边距 */
+  transition: transform 0.2s, box-shadow 0.2s; /* 过渡动画 */
+  
+  &:hover {
+    transform: translateY(-3px); /* 向上移动效果 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 悬停阴影 */
+  }
+  
+  .note-title {
+    margin-bottom: 10px;   /* 底部外边距 */
+    font-size: 1.2rem;     /* 字体大小 */
+  }
+  
+  .note-excerpt {
+    color: var(--color-text-light); /* 摘要颜色 */
+    font-size: 0.95rem;    /* 字体大小 */
+  }
+}
+
+/* ========================================
+   集合/分类列表
+   ======================================== */
+.collection-list {
+  display: grid;           /* 网格布局 */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 响应式网格列 */
+  gap: 20px;              /* 网格间距 */
+  margin-top: 30px;        /* 顶部外边距 */
+}
+
+.collection-item {
+  border: 1px solid var(--color-border); /* 边框 */
+  border-radius: 5px;      /* 圆角 */
+  padding: 20px;           /* 内边距 */
+  transition: transform 0.2s; /* 过渡动画 */
+  
+  &:hover {
+    transform: translateY(-3px); /* 向上移动效果 */
+  }
+  
+  .collection-title {
+    margin-bottom: 10px;   /* 底部外边距 */
+  }
+  
+  .collection-count {
+    color: var(--color-text-light); /* 计数颜色 */
+    margin-bottom: 15px;   /* 底部外边距 */
+  }
+}
+
+/* ========================================
+   表格样式
+   ======================================== */
+table {
+  border-collapse: collapse; /* 边框合并 */
+  width: 100%;             /* 全宽 */
+  margin-bottom: 1.5em;    /* 底部外边距 */
+}
+
+th, td {
+  border: 1px solid var(--color-border); /* 边框 */
+  text-align: left;        /* 左对齐 */
+  padding: 8px;            /* 内边距 */
+}
+
+th {
+  background-color: var(--color-border); /* 表头背景色 */
+  font-weight: 600;        /* 表头字体粗细 */
+}
+
+/* ========================================
+   网站底部
+   ======================================== */
+.site-footer {
+  text-align: center;      /* 文本居中 */
+  padding: 20px 0;         /* 上下内边距 */
+  border-top: 1px solid var(--color-border); /* 顶部边框 */
+  color: var(--color-text-light); /* 文本颜色 */
+  font-size: 0.9rem;       /* 字体大小 */
+}
+
+/* ========================================
+   留言板
+   ======================================== */
+.guestbook-note {
+  margin-top: 30px;        /* 顶部外边距 */
+  font-size: 0.9rem;       /* 字体大小 */
+  color: var(--color-text-light); /* 文本颜色 */
+}
+
+/* ========================================
+   深色模式支持（系统偏好）
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #121212; /* 深色背景 */
+    --color-text: #e0e0e0;       /* 深色文本 */
+    --color-text-light: #a0a0a0; /* 深色次要文本 */
+    --color-border: #333333;     /* 深色边框 */
+    --color-link: #4dabf7;       /* 深色链接 */
+    --color-link-hover: #74c0fc; /* 深色链接悬停 */
+  }
+  
+  th {
+    background-color: var(--color-border); /* 深色模式表头背景 */
+  }
+}
+
+/* ========================================
+   打印样式
+   ======================================== */
+@media print {
+  /* 隐藏不需要打印的元素 */
+  .site-header,
+  .site-nav,
+  .site-footer {
+    display: none;
+  }
+  
+  /* 打印时的页面样式调整 */
+  .archive,
+  .posts,
+  .notes,
+  .microblog {
+    .post-list li {
+      background: white !important;    /* 白色背景 */
+      border: 1px solid #ccc;         /* 灰色边框 */
+      box-shadow: none;               /* 无阴影 */
+      transform: none !important;     /* 无变换效果 */
+      break-inside: avoid;            /* 避免分页断开 */
+    }
+  }
+  
+  .post-title:hover {
+    color: var(--color-text) !important; /* 打印时标题颜色 */
+  }
+  
+  a {
+    color: var(--color-text) !important; /* 打印时链接颜色 */
+    text-decoration: underline;          /* 打印时链接下划线 */
+  }
+}
+
+/* ========================================
+   无障碍功能 - 减少动画
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;      /* 极短动画时长 */
+    animation-iteration-count: 1 !important;    /* 动画只播放一次 */
+    transition-duration: 0.01ms !important;     /* 极短过渡时长 */
+  }
+  
+  html {
+    scroll-behavior: auto; /* 关闭平滑滚动 */
+  }
+}
+
+/* ========================================
+   响应式设计 - 平板和手机适配
+   ======================================== */
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 15px;            /* 减少导航项间距 */
+    
+    a {
+      font-size: 0.9rem;  /* 减小导航字体 */
+    }
+  }
+  
+  .page-title {
+    font-size: 2rem;      /* 减小页面标题字体 */
+  }
+  
+  .note-grid {
+    grid-template-columns: 1fr; /* 单列布局 */
+  }
+  
+  .post .post-header .post-title {
+    font-size: 2rem;      /* 减小文章标题字体 */
+  }
+}
+
+/* 小屏手机适配 */
+@media (max-width: 480px) {
+  .site-header .container {
+    flex-direction: column; /* 垂直布局 */
+    gap: 15px;             /* 项目间距 */
+  }
+  
+  .post-list.title-only .post-link {
+    flex-direction: column;  /* 垂直布局 */
+    align-items: flex-start; /* 左对齐 */
+    gap: 5px;               /* 项目间距 */
+  }
+}

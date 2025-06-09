@@ -1,0 +1,256 @@
+// ========================================
+// HB Jekyll 主题 - 布局样式文件
+// 包含页面布局、导航、页脚等样式
+// ========================================
+
+// 网站头部样式
+.site-header {
+  padding: $spacing-lg 0;              // 上下内边距
+  border-bottom: 1px solid var(--color-border); // 底部边框
+  margin-bottom: $spacing-xl;          // 下方外边距
+  background-color: var(--color-background); // 背景色
+  position: sticky;                    // 粘性定位
+  top: 0;                             // 顶部位置
+  z-index: 100;                       // 层级
+  backdrop-filter: blur(10px);        // 背景模糊效果
+  
+  .container {
+    display: flex;                     // 弹性布局
+    justify-content: space-between;    // 两端对齐
+    align-items: center;               // 垂直居中
+  }
+}
+
+// 网站Logo样式
+.site-logo {
+  font-size: 1.5rem;                  // 字体大小
+  font-weight: bold;                  // 加粗
+  color: var(--color-text);           // 文本颜色
+  text-decoration: none;              // 去除下划线
+  
+  &:hover {
+    color: var(--color-link);         // 悬停颜色
+  }
+}
+
+// 导航菜单样式
+.site-nav {
+  display: flex;                      // 弹性布局
+  align-items: center;                // 垂直居中
+  gap: $spacing-lg;                   // 项目间距
+  
+  a {
+    color: var(--color-text);         // 导航链接颜色
+    font-weight: 500;                 // 中等粗细
+    padding: $spacing-sm $spacing-md; // 内边距
+    border-radius: $border-radius-sm; // 圆角
+    transition: all $transition-fast; // 过渡动画
+    
+    &:hover, &.active {
+      color: var(--color-link);       // 悬停/激活颜色
+      background-color: var(--color-border); // 背景色
+    }
+  }
+  
+  // 主题切换按钮
+  #theme-toggle {
+    padding: $spacing-sm;             // 内边距
+    border-radius: $border-radius-sm; // 圆角
+    color: var(--color-text);        // 图标颜色
+    transition: all $transition-fast; // 过渡动画
+    
+    &:hover {
+      color: var(--color-link);      // 悬停颜色
+      background-color: var(--color-border); // 背景色
+    }
+    
+    svg {
+      width: 20px;                   // 图标宽度
+      height: 20px;                  // 图标高度
+    }
+  }
+  
+  // 响应式导航
+  @media (max-width: $breakpoint-md) {
+    gap: $spacing-md;                 // 减少间距
+    
+    a {
+      font-size: 0.9rem;             // 减小字体
+      padding: $spacing-xs $spacing-sm; // 减少内边距
+    }
+  }
+}
+
+// 主要内容区域
+.site-content {
+  min-height: calc(100vh - 200px);    // 最小高度
+  padding-bottom: $spacing-xl;        // 底部内边距
+}
+
+// 页面标题样式
+.page-title {
+  font-size: 2.5rem;                 // 字体大小
+  margin-bottom: $spacing-xl;        // 下方外边距
+  text-align: center;                // 居中对齐
+  color: var(--color-text);          // 文本颜色
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2rem;                 // 移动端减小字体
+  }
+}
+
+// 通用页面容器 (Archive, Posts, Notes, Microblog)
+.archive,
+.posts,
+.notes,
+.microblog {
+  max-width: $content-max-width;      // 最大宽度
+  margin: 0 auto;                     // 水平居中
+  padding: $spacing-xl $spacing-md;   // 内边距
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-lg $spacing-sm; // 移动端减少内边距
+  }
+}
+
+// 年份分组样式
+.archive-year,
+.posts-year,
+.notes-year,
+.microblog-year {
+  margin-bottom: $spacing-xl;         // 下方外边距
+  
+  &:first-child {
+    margin-top: 0;                   // 第一个无上边距
+  }
+  
+  &:last-child {
+    margin-bottom: 0;                // 最后一个无下边距
+  }
+  
+  h2 {
+    font-size: 1.8rem;               // 年份标题字体大小
+    font-weight: 600;                // 字体粗细
+    color: var(--color-text);        // 文本颜色
+    margin-bottom: $spacing-lg;      // 下方外边距
+    padding-bottom: $spacing-sm;     // 底部内边距
+    border-bottom: 2px solid var(--color-border); // 底部边框
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.5rem;             // 移动端减小字体
+    }
+  }
+}
+
+// 文章列表样式 (仅标题模式)
+.post-list {
+  list-style: none;                   // 去除列表样式
+  padding: 0;                         // 无内边距
+  margin: 0;                          // 无外边距
+  
+  &.title-only {
+    .post-item {
+      border-bottom: 1px solid var(--color-border); // 底部边框
+      
+      &:last-child {
+        border-bottom: none;          // 最后一项无边框
+      }
+    }
+    
+    .post-link {
+      display: flex;                  // 弹性布局
+      justify-content: space-between; // 两端对齐
+      align-items: center;            // 垂直居中
+      padding: $spacing-md 0;         // 上下内边距
+      color: var(--color-text);       // 文本颜色
+      transition: all $transition-fast; // 过渡动画
+      
+      &:hover {
+        color: var(--color-link);     // 悬停时文本颜色
+        transform: translateX(5px);   // 悬停时右移
+        
+        .post-title {
+          color: var(--color-link);   // 悬停时标题颜色
+        }
+      }
+      
+      // 移动端垂直布局
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;       // 垂直布局
+        align-items: flex-start;      // 左对齐
+        gap: $spacing-xs;             // 项目间距
+      }
+    }
+    
+    .post-title {
+      font-size: 1.1rem;             // 标题字体大小
+      font-weight: 500;              // 字体粗细
+      transition: color $transition-fast; // 颜色过渡
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: 1rem;             // 移动端减小字体
+      }
+    }
+    
+    .post-date {
+      color: var(--color-text-light); // 日期颜色
+      font-size: 0.9rem;             // 日期字体大小
+      font-weight: 400;              // 字体粗细
+      white-space: nowrap;            // 不换行
+      
+      @media (max-width: $breakpoint-md) {
+        font-size: 0.85rem;          // 移动端减小字体
+      }
+    }
+  }
+}
+
+// 网站底部样式
+.site-footer {
+  text-align: center;                 // 文本居中
+  padding: $spacing-xl 0;             // 上下内边距
+  border-top: 1px solid var(--color-border); // 顶部边框
+  color: var(--color-text-light);     // 文本颜色
+  font-size: 0.9rem;                  // 字体大小
+  background-color: var(--color-background); // 背景色
+  
+  p {
+    margin-bottom: $spacing-sm;       // 段落间距
+    
+    &:last-child {
+      margin-bottom: 0;               // 最后段落无下边距
+    }
+  }
+  
+  a {
+    color: var(--color-text-light);   // 链接颜色
+    
+    &:hover {
+      color: var(--color-link);       // 悬停颜色
+    }
+  }
+}
+
+// 社交链接样式
+.social-links {
+  display: flex;                      // 弹性布局
+  justify-content: center;            // 水平居中
+  gap: $spacing-md;                   // 项目间距
+  margin-top: $spacing-md;            // 上方外边距
+  
+  a {
+    padding: $spacing-sm;             // 内边距
+    border-radius: $border-radius-sm; // 圆角
+    transition: all $transition-fast; // 过渡动画
+    
+    &:hover {
+      background-color: var(--color-border); // 悬停背景
+      transform: translateY(-2px);    // 悬停上移
+    }
+    
+    svg {
+      width: 20px;                   // 图标宽度
+      height: 20px;                  // 图标高度
+    }
+  }
+}

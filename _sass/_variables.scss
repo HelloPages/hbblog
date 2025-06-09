@@ -1,0 +1,98 @@
+// ========================================
+// HB Jekyll 主题 - 变量定义文件
+// 包含所有颜色、字体、尺寸等变量
+// ========================================
+
+// 颜色变量 - 浅色模式
+:root {
+  // 基础颜色
+  --color-background: #ffffff;          // 背景色 - 白色
+  --color-text: #333333;               // 主文本色 - 深灰
+  --color-text-light: #666666;         // 次要文本色 - 中灰
+  --color-border: #eeeeee;             // 边框色 - 浅灰
+  --color-link: #0066cc;               // 链接色 - 蓝色
+  --color-link-hover: #004499;         // 链接悬停色 - 深蓝
+  
+  // 页面主题色
+  --archive-primary: #0066cc;          // 归档页主色 - 蓝色
+  --posts-primary: #00897b;            // 文章页主色 - 绿色
+  --notes-primary: #8e24aa;            // 笔记页主色 - 紫色
+  --microblog-primary: #fb8c00;        // 微博页主色 - 橙色
+  
+  // 悬停背景色
+  --archive-bg-hover: #e3f2fd;         // 归档页悬停背景
+  --posts-bg-hover: #e0f2f1;           // 文章页悬停背景
+  --notes-bg-hover: #f3e5f5;           // 笔记页悬停背景
+  --microblog-bg-hover: #fff3e0;       // 微博页悬停背景
+  
+  // 标签颜色 - 30种不同颜色
+  --color-tag-1: #e53935;             // 红色
+  --color-tag-2: #8e24aa;             // 紫色
+  --color-tag-3: #3949ab;             // 靛蓝
+  --color-tag-4: #039be5;             // 浅蓝
+  --color-tag-5: #00897b;             // 青绿
+  --color-tag-6: #7cb342;             // 浅绿
+  --color-tag-7: #fdd835;             // 黄色
+  --color-tag-8: #fb8c00;             // 橙色
+  // ... 更多标签颜色可以继续添加
+}
+
+// 深色模式颜色覆盖
+.dark-mode {
+  --color-background: #121212;         // 深色背景
+  --color-text: #e0e0e0;              // 深色文本
+  --color-text-light: #a0a0a0;        // 深色次要文本
+  --color-border: #333333;            // 深色边框
+  --color-link: #4dabf7;              // 深色链接
+  --color-link-hover: #74c0fc;        // 深色链接悬停
+  
+  // 深色模式页面主题色
+  --archive-primary: #64b5f6;         // 深色归档页主色
+  --posts-primary: #4db6ac;           // 深色文章页主色
+  --notes-primary: #ba68c8;           // 深色笔记页主色
+  --microblog-primary: #ffb74d;       // 深色微博页主色
+  
+  // 深色模式悬停背景
+  --archive-bg-hover: #1e3a8a;        // 深色归档页悬停背景
+  --posts-bg-hover: #1e4037;          // 深色文章页悬停背景
+  --notes-bg-hover: #4a148c;          // 深色笔记页悬停背景
+  --microblog-bg-hover: #e65100;      // 深色微博页悬停背景
+}
+
+// 字体变量
+$font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+$font-family-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+// 尺寸变量
+$container-max-width: 1200px;         // 容器最大宽度
+$content-max-width: 800px;            // 内容区最大宽度
+$sidebar-width: 300px;                // 侧边栏宽度
+
+// 间距变量
+$spacing-xs: 0.25rem;                 // 极小间距 4px
+$spacing-sm: 0.5rem;                  // 小间距 8px
+$spacing-md: 1rem;                    // 中等间距 16px
+$spacing-lg: 1.5rem;                  // 大间距 24px
+$spacing-xl: 2rem;                    // 极大间距 32px
+
+// 断点变量 (响应式设计)
+$breakpoint-sm: 576px;                // 小屏幕
+$breakpoint-md: 768px;                // 中等屏幕
+$breakpoint-lg: 992px;                // 大屏幕
+$breakpoint-xl: 1200px;               // 超大屏幕
+
+// 动画变量
+$transition-fast: 0.15s ease;         // 快速过渡
+$transition-normal: 0.3s ease;        // 正常过渡
+$transition-slow: 0.5s ease;          // 慢速过渡
+
+// 阴影变量
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);           // 小阴影
+$shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);          // 中等阴影
+$shadow-lg: 0 5px 15px rgba(0, 0, 0, 0.2);          // 大阴影
+
+// 圆角变量
+$border-radius-sm: 4px;               // 小圆角
+$border-radius-md: 8px;               // 中等圆角
+$border-radius-lg: 12px;              // 大圆角
+$border-radius-full: 50%;             // 完全圆形

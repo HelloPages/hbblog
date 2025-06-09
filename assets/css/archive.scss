@@ -1,0 +1,182 @@
+// Archive Page Styles - Add to existing style.scss
+// Uses existing CSS custom properties from the main stylesheet
+
+// Archive container
+.archive {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  
+  @media (max-width: 768px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+// Archive year sections
+.archive-year {
+  margin-bottom: 2.5rem;
+  
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-border, #eeeee);
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// Post list styling
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    margin-bottom: 1rem;
+    padding: 1.2rem;
+    background: var(--color-background);
+    border: 1px solid var(--color-border, #eeeeee);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-link, #0066cc);
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background: var(--color-tag-1, #f8f9fa);
+      transform: translateX(5px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// Post link styling
+.post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  
+  &:hover {
+    color: inherit;
+  }
+}
+
+// Post title styling
+.post-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: var(--color-link-hover, #0066cc);
+  }
+}
+
+// Post date styling
+.post-date {
+  font-size: 0.9rem;
+  color: var(--color-text-light, #666666);
+  font-weight: 400;
+}
+
+// Dark mode support using existing variables
+@media (prefers-color-scheme: dark) {
+  .archive-year h2 {
+    color: var(--color-text);
+    border-bottom-color: var(--color-border);
+  }
+  
+  .post-list li {
+    background: var(--color-background);
+    border-color: var(--color-border);
+    border-left-color: var(--color-link);
+    
+    &:hover {
+      background: var(--color-tag-1);
+    }
+  }
+  
+  .post-title {
+    color: var(--color-text);
+    
+    &:hover {
+      color: var(--color-link-hover);
+    }
+  }
+  
+  .post-date {
+    color: var(--color-text-light);
+  }
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .archive {
+    padding: 1rem 0.5rem;
+  }
+  
+  .post-list li {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .post-title {
+    font-size: 1rem;
+  }
+  
+  .post-date {
+    font-size: 0.85rem;
+  }
+}
+
+// Print styles
+@media print {
+  .post-list li {
+    background: white !important;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    break-inside: avoid;
+    transform: none !important;
+  }
+  
+  .post-title:hover {
+    color: var(--color-text) !important;
+  }
+}
+
+// Focus styles for accessibility
+.post-link:focus {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Additional styling for better visual hierarchy
+.archive-year:first-child {
+  margin-top: 0;
+}
+
+.archive-year:last-child {
+  margin-bottom: 0;
+}
+
+// Smooth scrolling for anchor links
+html {
+  scroll-behavior: smooth;
+}
+
+// Enhanced hover states
+.post-list li {
+  cursor: pointer;
+  
+  &:active {
+    transform: translateX(3px);
+  }
+}

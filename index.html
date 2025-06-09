@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<div class="home-content">
+  <h1>Welcome to My Digital Garden</h1>
+  <p>This is a place for my thoughts, notes, and ideas.</p>
+  
+  <div class="collections-container">
+    <p>Here are some collections of related content:</p>
+      
+    <div class="collection-list">
+      {% assign categories = site.categories | sort %}
+      {% for category in categories %}
+        <div class="collection-item">
+          <h2 class="collection-title">{{ category[0] | capitalize }}</h2>
+          <p class="collection-count">{{ category[1].size }} items</p>
+          <a href="{{ '/' | append: category[0] | slugify | relative_url }}" class="collection-link">Read more! →</a>
+        </div>
+      {% endfor %}
+    </div> 
+  </div>
+  
+  <br>
+  <h3>Here's an HTML table comparing Notes, Posts, and Microblog</h3>
+  <br>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>特征</th>
+        <th>Notes (笔记)</th>
+        <th>Posts (帖子)</th>
+        <th>Microblog (微博/微博客)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>内容长度</td>
+        <td>通常较长，可以包含详细内容、想法、思考等</td>
+        <td>中等长度，比笔记短，但比微博长</td>
+        <td>非常短，通常限制在几十字到几百字</td>
+      </tr>
+      <tr>
+        <td>内容形式</td>
+        <td>可以是文本、图片、链接等，更个人化</td>
+        <td>通常是文本为主，可能包含图片、视频等多媒体</td>
+        <td>主要是简短的文本，可能附带图片、链接或标签</td>
+      </tr>
+      <tr>
+        <td>发布频率</td>
+        <td>不定期，根据个人想法和灵感</td>
+        <td>定期或不定期，取决于用户习惯</td>
+        <td>频繁，可实时更新，随时分享想法</td>
+      </tr>
+      <tr>
+        <td>受众互动</td>
+        <td>互动较少，更多是个人记录</td>
+        <td>有一定互动，如评论、点赞</td>
+        <td>互动性强，评论、转发、点赞等社交功能丰富</td>
+      </tr>
+      <tr>
+        <td>隐私性</td>
+        <td>通常更私密，可能是个人日记性质</td>
+        <td>公开或半公开，取决于平台设置</td>
+        <td>通常是公开的，面向广大网友</td>
+      </tr>
+      <tr>
+        <td>典型平台</td>
+        <td>Evernote、OneNote、个人博客中的笔记功能</td>
+        <td>Facebook、微博中的长文帖子、博客文章</td>
+        <td>Twitter、新浪微博、Twitter-like平台</td>
+      </tr>
+      <tr>
+        <td>主要目的</td>
+        <td>个人记录、思考整理、知识管理</td>
+        <td>分享观点、表达想法、内容创作</td>
+        <td>实时分享、社交互动、信息传播</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
