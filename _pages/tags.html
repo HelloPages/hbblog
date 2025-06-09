@@ -1,17 +1,17 @@
 ---
 layout: default
 title: Tags
-permalink: /tags/
+permalink: /tags
 ---
 
 <div class="tags">
   <h1 class="page-title">Tags</h1>
   
-  {% assign tags = site.tags | sort %}
+  {% assign all_tags = site.tags | sort %}
   
-  {% if tags.size > 0 %}
+  {% if all_tags.size > 0 %}
     <div class="tag-cloud">
-      {% for tag in tags %}
+      {% for tag in all_tags %}
         <a href="#{{ tag[0] | slugify }}" class="tag">
           {{ tag[0] }}
           <span class="tag-count">({{ tag[1].size }})</span>
@@ -19,19 +19,15 @@ permalink: /tags/
       {% endfor %}
     </div>
     
-    {% for tag in tags %}
+    {% for tag in all_tags %}
       <div class="tag-section" id="{{ tag[0] | slugify }}">
         <h2>{{ tag[0] }}</h2>
-        
         <ul class="post-list">
           {% for post in tag[1] %}
-          <li class="post-item">
-            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-            {% if post.categories.size > 0 %}
-              <span class="post-category">[{{ post.categories | join: ", " }}]</span>
-            {% endif %}
-          </li>
+            <li class="post-item">
+              <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+              <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+            </li>
           {% endfor %}
         </ul>
       </div>

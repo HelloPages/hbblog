@@ -73,6 +73,19 @@ theme_settings:
     github: "https://github.com/username"
     email: "mailto:hello@example.com"
 
+# 页面设置
+defaults:
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "post"
+
 # 排除文件
 exclude:
   - Gemfile
@@ -83,3 +96,7 @@ exclude:
   - .github
   - README.md
   - LICENSE
+
+# 包含页面目录
+include:
+  - _pages
