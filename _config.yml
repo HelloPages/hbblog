@@ -6,7 +6,7 @@
 # 网站信息
 title: HB ☺                              # 网站标题
 description: Notes，Posts，Microblog，HbW.Me  # 网站描述
-baseurl: "/blog"                         # 子路径，如 /blog
+baseurl: "/hbblog"                         # 子路径，如 /blog
 url: "https://hellopages.github.io"      # 网站完整URL
 
 # 作者信息
