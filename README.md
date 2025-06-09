@@ -1,5 +1,7 @@
 # HB Jekyll Theme
 
+https://v0.dev/chat/hb-2FHBNmXt07I
+
 一个现代化、响应式的 Jekyll 主题，支持暗黑模式和多种内容类型。
 
 ## 特性
