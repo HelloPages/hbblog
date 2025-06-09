@@ -7,67 +7,25 @@ permalink: /microblog
 <div class="microblog">
   <h1 class="page-title">Microblog</h1>
   
-  {% assign microblog = site.categories.microblog | sort: 'date' | reverse %}
-  {% assign per_page = site.category_pagination.microblog.per_page | default: 4 %}
-  {% assign page_param = page.url | split: '/page/' | last | plus: 0 %}
-  {% assign current_page = page_param | default: 1 %}
-  {% assign offset = current_page | minus: 1 | times: per_page %}
-  {% assign total_pages = microblog.size | divided_by: per_page | ceil %}
+  {% assign microblog_by_year = site.categories.microblog | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
   
-  {% assign microblog_by_year = microblog | offset: offset | limit: per_page | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
-  
-  {% if microblog_by_year.size > 0 %}
-    {% for year_group in microblog_by_year %}
-    <div class="microblog-year">
+  {% for year_group in microblog_by_year %}
+    <div class="year-section">
       <h2>{{ year_group.name }}</h2>
       
-      <ul class="post-list">
+      <div class="post-entries">
         {% for post in year_group.items %}
-        <li class="post-item">
-          <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        </li>
+          <div class="post-entry">
+            <a href="{{ post.url | relative_url }}" class="post-entry-link">
+              <div class="post-entry-date">{{ post.date | date: "%Y-%m-%d" }}</div>
+              <div class="post-entry-title">{{ post.title }}</div>
+              <div class="post-entry-month">{{ post.date | date: "%b %d" }}</div>
+            </a>
+          </div>
         {% endfor %}
-      </ul>
+      </div>
     </div>
-    {% endfor %}
-    
-    <!-- 分页导航 -->
-    {% if total_pages > 1 %}
-    <div class="pagination">
-      <!-- 上一页 -->
-      {% if current_page > 1 %}
-        {% if current_page == 2 %}
-          <a href="{{ '/microblog' | relative_url }}">&laquo; 上一页</a>
-        {% else %}
-          {% assign prev_page = current_page | minus: 1 %}
-          <a href="{{ '/microblog/page/' | append: prev_page | relative_url }}">&laquo; 上一页</a>
-        {% endif %}
-      {% else %}
-        <span class="disabled">&laquo; 上一页</span>
-      {% endif %}
-      
-      <!-- 页码 -->
-      {% for page_num in (1..total_pages) %}
-        {% if page_num == current_page %}
-          <span class="current">{{ page_num }}</span>
-        {% elsif page_num == 1 %}
-          <a href="{{ '/microblog' | relative_url }}">{{ page_num }}</a>
-        {% else %}
-          <a href="{{ '/microblog/page/' | append: page_num | relative_url }}">{{ page_num }}</a>
-        {% endif %}
-      {% endfor %}
-      
-      <!-- 下一页 -->
-      {% if current_page < total_pages %}
-        {% assign next_page = current_page | plus: 1 %}
-        <a href="{{ '/microblog/page/' | append: next_page | relative_url }}">下一页 &raquo;</a>
-      {% else %}
-        <span class="disabled">下一页 &raquo;</span>
-      {% endif %}
-    </div>
-    {% endif %}
-  {% else %}
-    <p>暂无 Microblog 内容。</p>
-  {% endif %}
+  {% endfor %}
+  
+  {% include pagination.html %}
 </div>

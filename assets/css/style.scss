@@ -11,6 +11,9 @@
   --header-bg: #f8f8f8;
   --footer-bg: #f8f8f8;
   --tag-bg: #f0f0f0;
+  --accent-color: #3b82f6;
+  --date-color: #888888;
+  --month-color: #999999;
 }
 
 .dark-mode {
@@ -22,6 +25,9 @@
   --header-bg: #333333;
   --footer-bg: #333333;
   --tag-bg: #444444;
+  --accent-color: #4f8df9;
+  --date-color: #aaaaaa;
+  --month-color: #888888;
 }
 
 * {
@@ -118,60 +124,74 @@ body {
   color: var(--text-color);
 }
 
-/* 文章列表样式 - 标题左边，时间右边，同一行 */
-.post-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* 年份部分 */
+.year-section {
+  margin-bottom: 3rem;
 }
 
-.post-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.post-link {
-  text-decoration: none;
-  color: var(--link-color);
-  font-weight: 500;
-  transition: color 0.3s ease;
-  flex-grow: 1;
-  margin-right: 1rem;
-}
-
-.post-link:hover {
-  color: var(--hover-color);
-  text-decoration: underline;
-}
-
-.post-date {
-  color: #888;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.post-category {
-  color: #888;
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
-}
-
-/* 年份标题 */
-.notes-year h2, 
-.posts-year h2, 
-.microblog-year h2, 
-.archive-year h2 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--border-color);
-  font-size: 1.5rem;
+.year-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
   color: var(--text-color);
+  font-weight: 600;
+}
+
+/* 文章条目样式 - 新的样式，类似截图 */
+.post-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-entry {
+  position: relative;
+  padding-left: 4px;
+}
+
+.post-entry::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
+.post-entry-link {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.post-entry-link:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.dark-mode .post-entry-link:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.post-entry-date {
+  font-size: 0.9rem;
+  color: var(--date-color);
+  margin-bottom: 0.25rem;
+}
+
+.post-entry-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.post-entry-month {
+  font-size: 0.85rem;
+  color: var(--month-color);
 }
 
 /* 首页样式 */
@@ -242,33 +262,6 @@ body {
 .collection-link:hover {
   color: var(--hover-color);
   text-decoration: underline;
-}
-
-/* 表格样式 */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  background-color: var(--bg-color);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
-}
-
-th {
-  background-color: var(--header-bg);
-  font-weight: 600;
-  color: var(--text-color);
-}
-
-tr:hover {
-  background-color: rgba(0, 102, 204, 0.05);
 }
 
 /* 30种随机彩色标签样式 */
@@ -351,86 +344,6 @@ tr:hover {
   color: var(--text-color);
 }
 
-/* 分页样式 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 3rem 0;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.pagination a, 
-.pagination span {
-  display: inline-block;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  transition: all 0.3s ease;
-  min-width: 44px;
-  text-align: center;
-}
-
-.pagination a:hover {
-  background-color: var(--link-color);
-  color: white;
-  border-color: var(--link-color);
-  transform: translateY(-1px);
-}
-
-.pagination .current {
-  background-color: var(--link-color);
-  color: white;
-  border-color: var(--link-color);
-  font-weight: 600;
-}
-
-.pagination .disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-color: var(--header-bg);
-}
-
-.pagination .disabled:hover {
-  transform: none;
-  background-color: var(--header-bg);
-  color: var(--text-color);
-  border-color: var(--border-color);
-}
-
-/* 关于页面样式 */
-.about-content {
-  max-width: 800px;
-}
-
-.about-content h2 {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-.about-content ul {
-  margin-bottom: 1rem;
-}
-
-.about-content li {
-  margin-bottom: 0.5rem;
-}
-
-.about-content a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-.about-content a:hover {
-  color: var(--hover-color);
-  text-decoration: underline;
-}
-
 /* 页脚样式 */
 .site-footer {
   background-color: var(--footer-bg);
@@ -454,20 +367,6 @@ tr:hover {
     gap: 0.5rem;
   }
   
-  .post-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .post-link {
-    margin-right: 0;
-    margin-bottom: 0.25rem;
-  }
-  
-  .post-date {
-    align-self: flex-end;
-  }
-  
   .collection-list {
     grid-template-columns: 1fr;
   }
@@ -476,24 +375,8 @@ tr:hover {
     font-size: 2rem;
   }
   
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  
   .container {
     padding: 0 15px;
-  }
-  
-  .pagination {
-    gap: 0.25rem;
-  }
-  
-  .pagination a, 
-  .pagination span {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
   }
 }
 
@@ -513,5 +396,21 @@ tr:hover {
   
   .collection-item {
     padding: 1rem;
+  }
+  
+  .post-entry-link {
+    padding: 0.75rem;
+  }
+  
+  .post-entry-date {
+    font-size: 0.8rem;
+  }
+  
+  .post-entry-title {
+    font-size: 1rem;
+  }
+  
+  .post-entry-month {
+    font-size: 0.75rem;
   }
 }

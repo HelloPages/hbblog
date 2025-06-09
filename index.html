@@ -7,105 +7,24 @@ layout: default
   <p>{{ site.description }}</p>
   
   <div class="collections-container">
-    <h2>内容分类</h2>
-    
     <div class="collection-list">
       <div class="collection-item">
         <h3 class="collection-title">Notes</h3>
-        <p class="collection-count">{{ site.categories.notes.size }} 篇笔记</p>
-        <a href="{{ '/notes' | relative_url }}" class="collection-link">查看所有 Notes →</a>
-        
-        <!-- 显示最新的Notes -->
-        {% assign notes_count = site.home_display.notes_count | default: 3 %}
-        {% assign recent_notes = site.categories.notes | sort: 'date' | reverse | limit: notes_count %}
-        {% if recent_notes.size > 0 %}
-        <ul class="post-list" style="margin-top: 1rem;">
-          {% for post in recent_notes %}
-          <li class="post-item">
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-            <span class="post-date">{{ post.date | date: "%m-%d" }}</span>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+        <p class="collection-count">{{ site.categories.notes.size }} 篇</p>
+        <a href="{{ '/notes' | relative_url }}" class="collection-link">查看全部 →</a>
       </div>
       
       <div class="collection-item">
         <h3 class="collection-title">Posts</h3>
-        <p class="collection-count">{{ site.categories.posts.size }} 篇文章</p>
-        <a href="{{ '/posts' | relative_url }}" class="collection-link">查看所有 Posts →</a>
-        
-        <!-- 显示最新的Posts -->
-        {% assign posts_count = site.home_display.posts_count | default: 3 %}
-        {% assign recent_posts = site.categories.posts | sort: 'date' | reverse | limit: posts_count %}
-        {% if recent_posts.size > 0 %}
-        <ul class="post-list" style="margin-top: 1rem;">
-          {% for post in recent_posts %}
-          <li class="post-item">
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-            <span class="post-date">{{ post.date | date: "%m-%d" }}</span>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+        <p class="collection-count">{{ site.categories.posts.size }} 篇</p>
+        <a href="{{ '/posts' | relative_url }}" class="collection-link">查看全部 →</a>
       </div>
       
       <div class="collection-item">
         <h3 class="collection-title">Microblog</h3>
-        <p class="collection-count">{{ site.categories.microblog.size }} 条微博</p>
-        <a href="{{ '/microblog' | relative_url }}" class="collection-link">查看所有 Microblog →</a>
-        
-        <!-- 显示最新的Microblog -->
-        {% assign microblog_count = site.home_display.microblog_count | default: 3 %}
-        {% assign recent_microblog = site.categories.microblog | sort: 'date' | reverse | limit: microblog_count %}
-        {% if recent_microblog.size > 0 %}
-        <ul class="post-list" style="margin-top: 1rem;">
-          {% for post in recent_microblog %}
-          <li class="post-item">
-            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
-            <span class="post-date">{{ post.date | date: "%m-%d" }}</span>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+        <p class="collection-count">{{ site.categories.microblog.size }} 条</p>
+        <a href="{{ '/microblog' | relative_url }}" class="collection-link">查看全部 →</a>
       </div>
     </div>
   </div>
-  
-  <!-- 内容类型对比表格 -->
-  <h2>内容类型对比</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>类型</th>
-        <th>用途</th>
-        <th>长度</th>
-        <th>更新频率</th>
-        <th>数量</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Notes</strong></td>
-        <td>知识笔记、学习总结</td>
-        <td>中等</td>
-        <td>不定期</td>
-        <td>{{ site.categories.notes.size }}</td>
-      </tr>
-      <tr>
-        <td><strong>Posts</strong></td>
-        <td>深度文章、技术分享</td>
-        <td>较长</td>
-        <td>每周</td>
-        <td>{{ site.categories.posts.size }}</td>
-      </tr>
-      <tr>
-        <td><strong>Microblog</strong></td>
-        <td>日常思考、快速记录</td>
-        <td>简短</td>
-        <td>每日</td>
-        <td>{{ site.categories.microblog.size }}</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
