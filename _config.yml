@@ -50,7 +50,7 @@ home_display:
 plugins:
   - jekyll-feed                         # RSS订阅插件 (开启/关闭: 注释此行)
   - jekyll-seo-tag                      # SEO优化插件 (开启/关闭: 注释此行)
-  - jekyll-paginate                     # 分页插件 (开启/关闭: 注释此行)
+# - jekyll-paginate                    # 分页插件 (开启/关闭: 注释此行)
   - jekyll-sitemap                      # 网站地图插件 (开启/关闭: 注释此行)
   - jekyll-paginate-v2                  # 高级分页插件，支持多分页
 
