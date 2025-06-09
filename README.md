@@ -31,22 +31,3 @@
 ## 许可证
 
 MIT License
-
-https://v0.dev/chat/hb-2FHBNmXt07I
-- 请安装插件 jekyll-paginate-v2  ├── _plugins/
-- 
-│   ├── markdownlint           # markdownlint插件
-│   ├── mdformat.rb            # mdformat插件
-│   ├── Jekyll-Paginate        # Jekyll-Paginate插件
-│   ├── Jekyll-Feed            # Jekyll-Feed插件
-│   ├── Jekyll-SEO             # Jekyll-SEO插件
-│   ├── Jekyll-Redirect-From   # Jekyll-Redirect-From插件
-│   ├── Jekyll-Exclude         # Jekyll-Exclude插件
-│   ├── Jekyll Sitemap         # Jekyll Sitemap插件
-│   ├── Jekyll Assets          # Jekyll Assets插件
-│   ├── Polyglot               # Polyglot插件
-│   ├── Jekyll - Mermaid       # Jekyll - Mermaid插件
-并添加在_config.yml 启用
-  翻页后无法打开
-  安装jekyll-paginate-v2插件后，
-  并检查404页面
