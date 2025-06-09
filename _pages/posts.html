@@ -1,0 +1,30 @@
+---
+layout: default
+title: Posts
+permalink: /posts/
+---
+
+<div class="posts">
+  <h1 class="page-title">Posts</h1>
+  
+  {% assign posts_by_year = site.categories.posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  
+  {% if posts_by_year.size > 0 %}
+    {% for year_group in posts_by_year %}
+    <div class="posts-year">
+      <h2>{{ year_group.name }}</h2>
+      
+      <ul class="post-list">
+        {% for post in year_group.items %}
+        <li class="post-item">
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>暂无 Posts 内容。</p>
+  {% endif %}
+</div>

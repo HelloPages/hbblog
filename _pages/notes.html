@@ -1,0 +1,30 @@
+---
+layout: default
+title: Notes
+permalink: /notes/
+---
+
+<div class="notes">
+  <h1 class="page-title">Notes</h1>
+  
+  {% assign notes_by_year = site.categories.notes | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  
+  {% if notes_by_year.size > 0 %}
+    {% for year_group in notes_by_year %}
+    <div class="notes-year">
+      <h2>{{ year_group.name }}</h2>
+      
+      <ul class="post-list">
+        {% for post in year_group.items %}
+        <li class="post-item">
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>暂无 Notes 内容。</p>
+  {% endif %}
+</div>

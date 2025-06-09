@@ -1,0 +1,30 @@
+---
+layout: default
+title: Microblog
+permalink: /microblog/
+---
+
+<div class="microblog">
+  <h1 class="page-title">Microblog</h1>
+  
+  {% assign microblog_by_year = site.categories.microblog | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  
+  {% if microblog_by_year.size > 0 %}
+    {% for year_group in microblog_by_year %}
+    <div class="microblog-year">
+      <h2>{{ year_group.name }}</h2>
+      
+      <ul class="post-list">
+        {% for post in year_group.items %}
+        <li class="post-item">
+          <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p>暂无 Microblog 内容。</p>
+  {% endif %}
+</div>
