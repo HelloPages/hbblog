@@ -2,30 +2,39 @@
 layout: default
 title: Posts
 permalink: /posts
+pagination: 
+  enabled: true
+  collection: posts
+  category: posts
+  per_page: 5
+  sort_field: date
+  sort_reverse: true
 ---
 
 <div class="posts">
   <h1 class="page-title">Posts</h1>
   
-  {% assign posts_by_year = site.categories.posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+  {% assign posts = site.categories.posts | sort: 'date' | reverse %}
+  {% assign posts_by_year = posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
   
   {% for year_group in posts_by_year %}
     <div class="year-section">
       <h2>{{ year_group.name }}</h2>
       
-      <div class="post-entries">
+      <ul class="post-list">
         {% for post in year_group.items %}
-          <div class="post-entry">
-            <a href="{{ post.url | relative_url }}" class="post-entry-link">
-              <div class="post-entry-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-              <div class="post-entry-title">{{ post.title }}</div>
-              <div class="post-entry-month">{{ post.date | date: "%b %d" }}</div>
-            </a>
-          </div>
+          <!-- 标题左侧，时间右侧，鼠标经过显示颜色 #f0f8ff -->
+          <li class="post-item">
+            <a href="{{ post.url | relative_url }}" class="post-link">{{ post.title }}</a>
+            <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          </li>
         {% endfor %}
-      </div>
+      </ul>
     </div>
   {% endfor %}
   
-  {% include pagination.html %}
+  <!-- 分页导航 -->
+  {% if paginator.total_pages > 1 %}
+    {% include pagination.html %}
+  {% endif %}
 </div>

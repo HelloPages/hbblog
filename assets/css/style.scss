@@ -14,6 +14,7 @@
   --accent-color: #3b82f6;
   --date-color: #888888;
   --month-color: #999999;
+  --hover-bg: #f0f8ff; /* 鼠标悬停背景色 - 添加备注 */
 }
 
 .dark-mode {
@@ -28,6 +29,7 @@
   --accent-color: #4f8df9;
   --date-color: #aaaaaa;
   --month-color: #888888;
+  --hover-bg: #1a2a3a; /* 暗色模式下的鼠标悬停背景色 - 添加备注 */
 }
 
 * {
@@ -124,6 +126,49 @@ body {
   color: var(--text-color);
 }
 
+/* 文章列表样式 - 标题左边，时间右边，同一行 */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 修改文章项样式，使标题在左侧，时间在右侧 - 添加备注 */
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+  border-radius: 4px;
+}
+
+/* 添加鼠标悬停效果，背景色为 #f0f8ff - 添加备注 */
+.post-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.post-link {
+  text-decoration: none;
+  color: var(--link-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
+.post-link:hover {
+  color: var(--hover-color);
+}
+
+.post-date {
+  color: var(--date-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
 /* 年份部分 */
 .year-section {
   margin-bottom: 3rem;
@@ -134,64 +179,8 @@ body {
   margin-bottom: 1.5rem;
   color: var(--text-color);
   font-weight: 600;
-}
-
-/* 文章条目样式 - 新的样式，类似截图 */
-.post-entries {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.post-entry {
-  position: relative;
-  padding-left: 4px;
-}
-
-.post-entry::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background-color: var(--accent-color);
-  border-radius: 2px;
-}
-
-.post-entry-link {
-  display: block;
-  padding: 1rem;
-  text-decoration: none;
-  background-color: var(--bg-color);
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.post-entry-link:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-}
-
-.dark-mode .post-entry-link:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.post-entry-date {
-  font-size: 0.9rem;
-  color: var(--date-color);
-  margin-bottom: 0.25rem;
-}
-
-.post-entry-title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-color);
-  margin-bottom: 0.25rem;
-}
-
-.post-entry-month {
-  font-size: 0.85rem;
-  color: var(--month-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
 }
 
 /* 首页样式 */
@@ -398,19 +387,18 @@ body {
     padding: 1rem;
   }
   
-  .post-entry-link {
-    padding: 0.75rem;
+  /* 在小屏幕上调整文章项的布局 - 添加备注 */
+  .post-item {
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  .post-entry-date {
-    font-size: 0.8rem;
+  .post-link {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
   }
   
-  .post-entry-title {
-    font-size: 1rem;
-  }
-  
-  .post-entry-month {
-    font-size: 0.75rem;
+  .post-date {
+    align-self: flex-end;
   }
 }
