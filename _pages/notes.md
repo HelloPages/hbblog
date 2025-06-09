@@ -1,12 +1,10 @@
 ---
-layout: default
+layout: page
 title: Notes
 permalink: /notes/
 ---
 
 <div class="notes">
-  <h1 class="page-title">Notes</h1>
-  
   {% assign notes_by_year = site.categories.notes | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
   
   {% for year_group in notes_by_year %}
@@ -17,7 +15,7 @@ permalink: /notes/
   </div>
   {% endfor %}
   
-  {% if site.paginate %}
+  {% if paginator.total_pages > 1 %}
     {% include pagination.html %}
   {% endif %}
 </div>

@@ -1,12 +1,10 @@
 ---
-layout: default
+layout: page
 title: Archive
 permalink: /archive/
 ---
 
 <div class="archive">
-  <h1 class="page-title">Archive</h1>
-  
   {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
   
   {% for year_group in posts_by_year %}
@@ -17,7 +15,7 @@ permalink: /archive/
   </div>
   {% endfor %}
   
-  {% if site.paginate %}
+  {% if paginator.total_pages > 1 %}
     {% include pagination.html %}
   {% endif %}
 </div>

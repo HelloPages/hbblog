@@ -1,299 +1,311 @@
 ---
 ---
 
-// ========================================
-// HB Jekyll 主题 - 主样式文件
-// 导入所有样式模块
-// ========================================
-
-// 导入变量文件 (必须最先导入)
 @import "variables";
-
-// 导入基础样式
 @import "base";
-
-// 导入布局样式
 @import "layout";
 
-// 页面特定样式
-// ========================================
-
-// 首页样式
-.home-content {
-  text-align: center;                 // 文本居中
-  padding: $spacing-xl 0;             // 上下内边距
-  
-  h1 {
-    font-size: 3rem;                  // 大标题
-    margin-bottom: $spacing-lg;       // 下方外边距
-    color: var(--color-text);         // 文本颜色
-    
-    @media (max-width: $breakpoint-md) {
-      font-size: 2.5rem;             // 移动端减小字体
-    }
-  }
-  
-  p {
-    font-size: 1.2rem;               // 描述文字大小
-    color: var(--color-text-light);  // 次要文本颜色
-    margin-bottom: $spacing-xl;      // 下方外边距
-  }
+/* 全局样式 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --link-color: #0066cc;
+  --hover-color: #004499;
+  --border-color: #dddddd;
+  --header-bg: #f8f8f8;
+  --footer-bg: #f8f8f8;
+  --tag-bg: #f0f0f0;
 }
 
-// 集合列表样式
+.dark-mode {
+  --bg-color: #222222;
+  --text-color: #e0e0e0;
+  --link-color: #6699ff;
+  --hover-color: #99ccff;
+  --border-color: #444444;
+  --header-bg: #333333;
+  --footer-bg: #333333;
+  --tag-bg: #444444;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 头部样式 */
+.site-header {
+  background-color: var(--header-bg);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 0.5rem;
+}
+
+.site-nav a:hover, .site-nav a.active {
+  color: var(--link-color);
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0.5rem;
+}
+
+/* 内容样式 */
+.site-content {
+  padding: 2rem 0;
+  min-height: calc(100vh - 180px);
+}
+
+.page-title, .post-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* 文章列表样式 */
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-date {
+  color: #888;
+  font-size: 0.9rem;
+  min-width: 100px;
+  text-align: right;
+  margin-right: 1rem;
+}
+
+.post-link {
+  text-decoration: none;
+  color: var(--link-color);
+  flex-grow: 1;
+}
+
+.post-link:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
+}
+
+/* 年份标题 */
+.notes-year h2, .posts-year h2, .microblog-year h2, .archive-year h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+/* 首页样式 */
+.home-content {
+  margin-bottom: 2rem;
+}
+
 .collections-container {
-  margin-top: $spacing-xl;            // 上方外边距
+  margin: 2rem 0;
+}
+
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.collection-item {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.collection-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.collection-count {
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.collection-link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.collection-link:hover {
+  color: var(--hover-color);
+  text-decoration: underline;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--header-bg);
+}
+
+/* 标签样式 */
+.post-tags {
+  margin-top: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--tag-bg);
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.tag:hover {
+  opacity: 0.8;
+}
+
+.tag-count {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.tag-cloud {
+  margin-bottom: 2rem;
+}
+
+.tag-section {
+  margin-bottom: 2rem;
+}
+
+/* 分页样式 */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.pagination a, .pagination span {
+  padding: 0.5rem 1rem;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: var(--link-color);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.pagination a:hover {
+  background-color: var(--link-color);
+  color: white;
+}
+
+.pagination .disabled {
+  color: #888;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.page_number {
+  color: #888;
+}
+
+/* 页脚样式 */
+.site-footer {
+  background-color: var(--footer-bg);
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .post-item {
+    flex-direction: column;
+  }
+  
+  .post-date {
+    text-align: left;
+    margin-bottom: 0.25rem;
+  }
   
   .collection-list {
-    display: grid;                    // 网格布局
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // 响应式列
-    gap: $spacing-lg;                 // 网格间距
-    margin-top: $spacing-lg;          // 上方外边距
+    grid-template-columns: 1fr;
   }
   
-  .collection-item {
-    padding: $spacing-lg;             // 内边距
-    border: 1px solid var(--color-border); // 边框
-    border-radius: $border-radius-md; // 圆角
-    background-color: var(--color-background); // 背景色
-    transition: all $transition-normal; // 过渡动画
-    text-align: left;                 // 左对齐
-    
-    &:hover {
-      transform: translateY(-5px);    // 悬停上移
-      box-shadow: $shadow-lg;         // 悬停阴影
-      border-color: var(--color-link); // 悬停边框色
-    }
-    
-    .collection-title {
-      font-size: 1.3rem;             // 标题字体大小
-      font-weight: 600;              // 字体粗细
-      margin-bottom: $spacing-sm;    // 下方外边距
-      color: var(--color-text);      // 文本颜色
-    }
-    
-    .collection-count {
-      color: var(--color-text-light); // 计数颜色
-      font-size: 0.9rem;             // 字体大小
-      margin-bottom: $spacing-md;    // 下方外边距
-    }
-    
-    .collection-link {
-      color: var(--color-link);      // 链接颜色
-      font-weight: 500;              // 字体粗细
-      
-      &:hover {
-        color: var(--color-link-hover); // 悬停颜色
-      }
-    }
-  }
-}
-
-// 表格样式增强
-table {
-  margin: $spacing-xl auto;           // 上下外边距，水平居中
-  border-radius: $border-radius-md;  // 圆角
-  overflow: hidden;                   // 隐藏溢出
-  box-shadow: $shadow-sm;             // 阴影
-  
-  thead {
-    background-color: var(--color-border); // 表头背景
-    
-    th {
-      font-weight: 600;               // 表头字体粗细
-      text-align: center;             // 表头居中
-      padding: $spacing-md;           // 表头内边距
-    }
-  }
-  
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: rgba(0, 0, 0, 0.02); // 斑马纹
-      }
-      
-      &:hover {
-        background-color: var(--color-border); // 悬停背景
-      }
-    }
-    
-    td {
-      padding: $spacing-md;           // 单元格内边距
-      border-bottom: 1px solid var(--color-border); // 底部边框
-    }
-  }
-}
-
-// 分页样式
-.pagination {
-  margin: $spacing-xl 0;              // 上下外边距
-  text-align: center;                 // 居中对齐
-  
-  .pagination-wrapper {
-    display: flex;                    // 弹性布局
-    justify-content: center;          // 水平居中
-    align-items: center;              // 垂直居中
-    gap: $spacing-sm;                 // 项目间距
-    flex-wrap: wrap;                  // 允许换行
-  }
-  
-  .pagination-link,
-  .pagination-number {
-    display: inline-flex;             // 行内弹性布局
-    align-items: center;              // 垂直居中
-    justify-content: center;          // 水平居中
-    padding: $spacing-sm $spacing-md; // 内边距
-    text-decoration: none;            // 去除下划线
-    border: 1px solid var(--color-border); // 边框
-    border-radius: $border-radius-sm; // 圆角
-    color: var(--color-text);         // 文本颜色
-    background-color: var(--color-background); // 背景色
-    transition: all $transition-fast; // 过渡动画
-    min-width: 2.5rem;                // 最小宽度
-    font-weight: 500;                 // 字体粗细
-    
-    &:hover:not(.disabled) {
-      background-color: var(--color-border); // 悬停背景
-      border-color: var(--color-link);       // 悬停边框
-      color: var(--color-link);              // 悬停文本色
-    }
-  }
-  
-  .pagination-number.current {
-    background-color: var(--color-link); // 当前页背景
-    border-color: var(--color-link);     // 当前页边框
-    color: white;                         // 当前页文本色
-    font-weight: 600;                     // 当前页字体粗细
-  }
-  
-  .pagination-link.disabled {
-    opacity: 0.4;                     // 禁用透明度
-    cursor: not-allowed;              // 禁用鼠标指针
-    pointer-events: none;             // 禁用点击事件
-  }
-  
-  .pagination-numbers {
-    display: flex;                    // 弹性布局
-    align-items: center;              // 垂直居中
-    gap: $spacing-xs;                 // 项目间距
-  }
-  
-  .pagination-icon {
-    font-size: 1.2rem;               // 图标大小
-    font-weight: bold;               // 图标粗细
-    line-height: 1;                  // 行高
-  }
-  
-  .pagination-text {
-    margin: 0 $spacing-xs;            // 左右外边距
-    font-size: 0.9rem;               // 字体大小
-  }
-}
-
-// 移动端分页样式
-@media (max-width: $breakpoint-md) {
-  .pagination {
-    margin: $spacing-lg 0;            // 减少上下外边距
-    
-    .pagination-wrapper {
-      gap: $spacing-sm;               // 项目间距
-      padding: 0 $spacing-md;         // 左右内边距
-    }
-    
-    .pagination-link {
-      padding: $spacing-md $spacing-lg; // 增加内边距
-      border-radius: $border-radius-sm; // 圆角
-      flex: 1;                        // 弹性增长
-      max-width: 100px;               // 最大宽度
-    }
-    
-    .pagination-numbers {
-      gap: $spacing-xs;               // 减少间距
-    }
-    
-    .pagination-number {
-      padding: $spacing-sm;           // 内边距
-      min-width: 2rem;                // 最小宽度
-      font-size: 0.9rem;              // 字体大小
-    }
-    
-    .pagination-text {
-      font-size: 0.8rem;             // 减小字体
-    }
-    
-    .pagination-icon {
-      font-size: 1.1rem;             // 减小图标
-    }
-  }
-}
-
-// 超小屏幕分页样式
-@media (max-width: $breakpoint-sm) {
-  .pagination {
-    .pagination-wrapper {
-      gap: $spacing-md;               // 增加间距
-      padding: 0 $spacing-sm;         // 减少内边距
-    }
-    
-    .pagination-link {
-      padding: $spacing-lg;           // 增加内边距
-      border-radius: $border-radius-md; // 增加圆角
-      font-size: 0.9rem;              // 字体大小
-      flex: 1;                        // 弹性增长
-      max-width: 120px;               // 最大宽度
-    }
-    
-    .pagination-numbers {
-      display: none;                  // 隐藏页码
-    }
-    
-    .pagination-text {
-      display: none;                  // 隐藏文字
-    }
-    
-    .pagination-icon {
-      font-size: 1.5rem;             // 增大图标
-    }
-  }
-}
-
-// 触摸设备优化
-@media (hover: none) and (pointer: coarse) {
-  .pagination-link,
-  .pagination-number {
-    min-height: 44px;                // 最小触摸目标
-    min-width: 44px;                 // 最小触摸目标
-  }
-  
-  .pagination-link:active:not(.disabled) {
-    background-color: var(--color-border); // 激活背景
-    transform: scale(0.95);          // 激活缩放
-  }
-  
-  .pagination-number:active {
-    transform: scale(0.95);          // 激活缩放
-  }
-}
-
-// 深色模式分页样式
-.dark-mode {
-  .pagination-link,
-  .pagination-number {
-    background-color: var(--color-background); // 深色背景
-    border-color: var(--color-border);         // 深色边框
-    color: var(--color-text);                  // 深色文本
-  }
-  
-  .pagination-link:hover:not(.disabled),
-  .pagination-number:hover {
-    background-color: var(--color-border);     // 深色悬停背景
-    border-color: var(--color-link);           // 深色悬停边框
-    color: var(--color-link);                  // 深色悬停文本
-  }
-  
-  .pagination-number.current {
-    background-color: var(--color-link);       // 深色当前页背景
-    border-color: var(--color-link);           // 深色当前页边框
-    color: white;                              // 深色当前页文本
+  table {
+    display: block;
+    overflow-x: auto;
   }
 }

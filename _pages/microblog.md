@@ -1,12 +1,10 @@
 ---
-layout: default
+layout: page
 title: Microblog
 permalink: /microblog/
 ---
 
 <div class="microblog">
-  <h1 class="page-title">Microblog</h1>
-  
   {% assign microblog_by_year = site.categories.microblog | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
   
   {% for year_group in microblog_by_year %}
@@ -17,7 +15,7 @@ permalink: /microblog/
   </div>
   {% endfor %}
   
-  {% if site.paginate %}
+  {% if paginator.total_pages > 1 %}
     {% include pagination.html %}
   {% endif %}
 </div>
