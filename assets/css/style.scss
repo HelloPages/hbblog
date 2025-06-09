@@ -271,7 +271,7 @@ tr:hover {
   background-color: rgba(0, 102, 204, 0.05);
 }
 
-/* 随机彩色标签样式 */
+/* 30种随机彩色标签样式 */
 .post-tags {
   margin-top: 0.5rem;
 }
@@ -294,15 +294,37 @@ tr:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* 随机彩色标签 */
-.tag:nth-child(8n+1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-.tag:nth-child(8n+2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-.tag:nth-child(8n+3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-.tag:nth-child(8n+4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-.tag:nth-child(8n+5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-.tag:nth-child(8n+6) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
-.tag:nth-child(8n+7) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; }
-.tag:nth-child(8n+8) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+/* 30种不同的渐变色彩 */
+.tag:nth-child(30n+1) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.tag:nth-child(30n+2) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.tag:nth-child(30n+3) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.tag:nth-child(30n+4) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.tag:nth-child(30n+5) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.tag:nth-child(30n+6) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+.tag:nth-child(30n+7) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; }
+.tag:nth-child(30n+8) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+.tag:nth-child(30n+9) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; }
+.tag:nth-child(30n+10) { background: linear-gradient(135deg, #ff8a80 0%, #ea4c89 100%); }
+.tag:nth-child(30n+11) { background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%); color: #333; }
+.tag:nth-child(30n+12) { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); color: #333; }
+.tag:nth-child(30n+13) { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
+.tag:nth-child(30n+14) { background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%); }
+.tag:nth-child(30n+15) { background: linear-gradient(135deg, #e0c3fc 0%, #9bb5ff 100%); color: #333; }
+.tag:nth-child(30n+16) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.tag:nth-child(30n+17) { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.tag:nth-child(30n+18) { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.tag:nth-child(30n+19) { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.tag:nth-child(30n+20) { background: linear-gradient(135deg, #30cfd0 0%, #91a7ff 100%); }
+.tag:nth-child(30n+21) { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; }
+.tag:nth-child(30n+22) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #333; }
+.tag:nth-child(30n+23) { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+.tag:nth-child(30n+24) { background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%); color: #333; }
+.tag:nth-child(30n+25) { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; }
+.tag:nth-child(30n+26) { background: linear-gradient(135deg, #ff8a80 0%, #ea4c89 100%); }
+.tag:nth-child(30n+27) { background: linear-gradient(135deg, #8fd3f4 0%, #84fab0 100%); color: #333; }
+.tag:nth-child(30n+28) { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); color: #333; }
+.tag:nth-child(30n+29) { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
+.tag:nth-child(30n+30) { background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%); }
 
 .tag-count {
   font-size: 0.75rem;
@@ -336,34 +358,48 @@ tr:hover {
   align-items: center;
   margin: 3rem 0;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.pagination a, .pagination span {
+.pagination a, 
+.pagination span {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   text-decoration: none;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 6px;
   color: var(--text-color);
   background-color: var(--bg-color);
   transition: all 0.3s ease;
+  min-width: 44px;
+  text-align: center;
 }
 
 .pagination a:hover {
   background-color: var(--link-color);
   color: white;
   border-color: var(--link-color);
+  transform: translateY(-1px);
 }
 
 .pagination .current {
   background-color: var(--link-color);
   color: white;
   border-color: var(--link-color);
+  font-weight: 600;
 }
 
 .pagination .disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background-color: var(--header-bg);
+}
+
+.pagination .disabled:hover {
+  transform: none;
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
 }
 
 /* 关于页面样式 */
@@ -448,6 +484,16 @@ tr:hover {
   
   .container {
     padding: 0 15px;
+  }
+  
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .pagination a, 
+  .pagination span {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
   }
 }
 
