@@ -20,9 +20,9 @@ markdown: kramdown                       # Markdown 解析器
 highlighter: rouge                       # 代码高亮器
 permalink: /:categories/:year/:month/:day/:title/  # 文章URL格式
 
-# 分页设置 
-  paginate: 5                 # 首页每页显示文章数
-paginate_path: "/page:num/"   # 首页分页URL格式
+# 分页设置Add commentMore actions
+paginate: 5                              # 首页每页显示文章数
+paginate_path: "/page:num/"              # 首页分页URL格式
 
 # 外部CSS
 # external_css:
