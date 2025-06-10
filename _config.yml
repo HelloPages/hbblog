@@ -37,7 +37,7 @@ category_pagination:
     per_page: 6                          # Posts每页显示5篇文章
     path: "/posts/page:num/"             # Posts分页URL格式
   microblog:
-    per_page: 6                          # Microblog每页显示5篇文章
+    per_page: 7                          # Microblog每页显示5篇文章
     path: "/microblog/page:num/"         # Microblog分页URL格式
 
 # 首页显示设置
